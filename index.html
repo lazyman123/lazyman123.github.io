@@ -175,11 +175,11 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:875915286@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="https://github.com/lazyman123" title="GitHub"></a>
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
                             
-                                <a class="fa 网易云音乐" href="http://music.163.com/#/user/home?id=368723519" title="网易云音乐"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
                     </nav>
@@ -188,7 +188,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
                     </div>
                 </section>
                 
@@ -253,11 +253,11 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:875915286@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="https://github.com/lazyman123" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
                             
-                                <a class="fa 网易云音乐" target="_blank" href="http://music.163.com/#/user/home?id=368723519" title="网易云音乐"></a>
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
             </nav>
@@ -267,6 +267,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-IE6常见兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/15/IE6常见兼容问题/" class="article-date">
+      <time datetime="2018-03-15T10:48:32.000Z" itemprop="datePublished">2018-03-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/15/IE6常见兼容问题/">IE6常见兼容问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="IE6常见兼容问题"><a href="#IE6常见兼容问题" class="headerlink" title="IE6常见兼容问题"></a>IE6常见兼容问题</h2><h4 id="1-margin加倍问题"><a href="#1-margin加倍问题" class="headerlink" title="1.margin加倍问题"></a>1.margin加倍问题</h4><blockquote>
+<p>解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；</p>
+</blockquote>
+<h4 id="2-子集中有设置position，则父级overflow失效"><a href="#2-子集中有设置position，则父级overflow失效" class="headerlink" title="2.子集中有设置position，则父级overflow失效"></a>2.子集中有设置position，则父级overflow失效</h4>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a href="/2018/03/15/IE6常见兼容问题/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-何为BFC" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -274,15 +336,6 @@
       <time datetime="2018-03-13T10:48:32.000Z" itemprop="datePublished">2018-03-13</time>
 </a>
 
- 
-    <a href="/2018/03/13/何为BFC/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/03/13/何为BFC/"></span>
-        
-    </a>
 
     </div>
   
@@ -390,26 +443,6 @@
         })
     </script>
 
-
-    
-
-    
-        <script id="dsq-count-scr" src="//.disqus.com/count.js" async></script>
-        <script>
-            if ($(".left-col").is(":visible")) {
-                var $disqusCount = $(".disqus-comment-count");
-                $disqusCount.bind("DOMNodeInserted", function(e) {
-                    var num = $(this).text().replace(/[^0-9]/ig,"");
-                    if (num > 0) {
-                        $(this).siblings(".count-comment").text(num);
-                    }
-                    $(this).remove();
-                })
-            } else {
-                $(".disqus-comment-count").remove();
-            }
-        </script>
-     
 
 
 

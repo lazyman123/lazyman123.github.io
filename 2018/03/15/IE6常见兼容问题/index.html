@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="相自我改,命自我造.">
-<meta name="keywords" content="tags">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://lazyman123.github.io/tags/index.html">
+<meta name="description" content="IE6常见兼容问题1.margin加倍问题 解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；  2.子集中有设置position，则父级overflow失效">
+<meta name="keywords" content="CSS,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IE6常见兼容问题">
+<meta property="og:url" content="http://lazyman123.github.io/2018/03/15/IE6常见兼容问题/index.html">
 <meta property="og:site_name" content="忆十一·Blog">
-<meta property="og:description" content="相自我改,命自我造.">
+<meta property="og:description" content="IE6常见兼容问题1.margin加倍问题 解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；  2.子集中有设置position，则父级overflow失效">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-13T13:00:01.124Z">
+<meta property="og:updated_time" content="2018-03-15T15:44:26.691Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="相自我改,命自我造.">
+<meta name="twitter:title" content="IE6常见兼容问题">
+<meta name="twitter:description" content="IE6常见兼容问题1.margin加倍问题 解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；  2.子集中有设置position，则父级overflow失效">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>标签 | 忆十一·Blog</title>
+<title>IE6常见兼容问题 | 忆十一·Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,7 +68,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -262,11 +262,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-IE6常见兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2018-03-13T12:57:44.000Z" itemprop="datePublished">2018-03-13</time>
+      <a href="/2018/03/15/IE6常见兼容问题/" class="article-date">
+      <time datetime="2018-03-15T10:48:32.000Z" itemprop="datePublished">2018-03-15</time>
 </a>
 
 
@@ -281,7 +281,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      标签
+      IE6常见兼容问题
     </h1>
   
 
@@ -297,96 +297,109 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
-
-
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li></ul>
-
-<p class="count"></p>
-
-<div class="tags">
-    <a href="/tags/CSS/" style="font-size: 35px; color: #000">CSS</a> <a href="/tags/HTML/" style="font-size: 16px; color: #808080">HTML</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
-
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
-
-          
-        
+        <h2 id="IE6常见兼容问题"><a href="#IE6常见兼容问题" class="headerlink" title="IE6常见兼容问题"></a>IE6常见兼容问题</h2><h4 id="1-margin加倍问题"><a href="#1-margin加倍问题" class="headerlink" title="1.margin加倍问题"></a>1.margin加倍问题</h4><blockquote>
+<p>解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；</p>
+</blockquote>
+<h4 id="2-子集中有设置position，则父级overflow失效"><a href="#2-子集中有设置position，则父级overflow失效" class="headerlink" title="2.子集中有设置position，则父级overflow失效"></a>2.子集中有设置position，则父级overflow失效</h4><a id="more"></a>
+<blockquote>
+<p>解决方法：为父级设置position：relative</p>
+</blockquote>
+<h4 id="3-lt-DOCTYPE-HTML-gt-文档类型的声明"><a href="#3-lt-DOCTYPE-HTML-gt-文档类型的声明" class="headerlink" title="3.&lt;!DOCTYPE HTML&gt;文档类型的声明"></a>3.&lt;!DOCTYPE HTML&gt;文档类型的声明</h4><blockquote>
+<p>产生条件：没写<br>解决方法：书写文档声明</p>
+</blockquote>
+<h4 id="4-默认行高"><a href="#4-默认行高" class="headerlink" title="4.默认行高"></a>4.默认行高</h4><blockquote>
+<p>产生条件：设置的文字高度超出盒模型内容区域设置的高度会影响布局<br>解决方法：给超出部分设置overflow：hidden</p>
+</blockquote>
+<h4 id="5-img的外部border"><a href="#5-img的外部border" class="headerlink" title="5.img的外部border"></a>5.img的外部border</h4><blockquote>
+<p>产生条件：当img标签外部有a标签时<br>解决方法：给img设置border：0；</p>
+</blockquote>
+<h4 id="6-经典3像素bug"><a href="#6-经典3像素bug" class="headerlink" title="6.经典3像素bug"></a>6.经典3像素bug</h4><blockquote>
+<p>产生条件：在ie6中浮动元素与非浮动元素在一行时，间距会出现三像素<br>解决方法：给非浮动元素设置浮动</p>
+</blockquote>
+<h4 id="7-a标签不适用于所有标签"><a href="#7-a标签不适用于所有标签" class="headerlink" title="7.a标签不适用于所有标签"></a>7.a标签不适用于所有标签</h4><blockquote>
+<p>产生条件：ie6中hover只是适用于a标签<br>解决方法：使用JavaScript方法模拟a标签使用方法</p>
+</blockquote>
+<h4 id="8-png图片"><a href="#8-png图片" class="headerlink" title="8.png图片"></a>8.png图片</h4><blockquote>
+<p>产生条件：IE6浏览器，不能设置透明<br>解决方法：使用JavaScript，或者换成GIF，jpg格式的图片</p>
+</blockquote>
+<h4 id="9-透明rgba与opacity"><a href="#9-透明rgba与opacity" class="headerlink" title="9.透明rgba与opacity"></a>9.透明rgba与opacity</h4><blockquote>
+<p>产生条件：IE6中不支持这两种设置方法<br>解决方法：使用ie6中的滤镜代替，如：opacity：0.5；filter：alpha（opacity=50）。</p>
+</blockquote>
+<h4 id="10-table标签中的border-color属性设置无效"><a href="#10-table标签中的border-color属性设置无效" class="headerlink" title="10.table标签中的border-color属性设置无效"></a>10.table标签中的border-color属性设置无效</h4><blockquote>
+<p>产生条件：ie6中设置无效<br>解决方法：在css中更改样式</p>
+</blockquote>
+<h4 id="11-子选择器不能使用"><a href="#11-子选择器不能使用" class="headerlink" title="11.子选择器不能使用"></a>11.子选择器不能使用</h4><blockquote>
+<p>产生条件：ie6，R&gt;f无效<br>解决方法：采用其他选择或者使用后代选择器</p>
+</blockquote>
+<h4 id="12-不支持最大最小宽高"><a href="#12-不支持最大最小宽高" class="headerlink" title="12.不支持最大最小宽高"></a>12.不支持最大最小宽高</h4><blockquote>
+<p>产生条件：ie6，标签的最高min/max-hight<br>解决方法：_height:最小高度值 只针对ie6</p>
+</blockquote>
+<h4 id="13-img图片下部多出5px"><a href="#13-img图片下部多出5px" class="headerlink" title="13.img图片下部多出5px"></a>13.img图片下部多出5px</h4><blockquote>
+<p>产生条件：ie6<br>解决方法：将图片转化成块级元素；display：block；</p>
+</blockquote>
+<h4 id="14-多显示一个字错误"><a href="#14-多显示一个字错误" class="headerlink" title="14.多显示一个字错误"></a>14.多显示一个字错误</h4><blockquote>
+<p>产生条件：多个浮动元素中间夹杂着HTML注释语句，浮动元素宽度设置为100%；则在下一行多显示一个上一行的最后一个字符<br>解决方法：果断删掉注释</p>
+</blockquote>
+<h4 id="15-待续"><a href="#15-待续" class="headerlink" title="15.待续"></a>15.待续</h4>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/15/IE6常见兼容问题/">IE6常见兼容问题</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">忆十一</a></p>
+        <p><span>发布时间:</span>2018-03-15, 18:48:32</p>
+        <p><span>最后更新:</span>2018-03-15, 23:44:26</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/15/IE6常见兼容问题/" title="IE6常见兼容问题">http://lazyman123.github.io/2018/03/15/IE6常见兼容问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lazyman123.github.io/2018/03/15/IE6常见兼容问题/　　作者: 忆十一" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/03/13/何为BFC/">
+                    何为BFC
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IE6常见兼容问题"><span class="toc-number">1.</span> <span class="toc-text">IE6常见兼容问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-margin加倍问题"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.margin加倍问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-子集中有设置position，则父级overflow失效"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.子集中有设置position，则父级overflow失效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-lt-DOCTYPE-HTML-gt-文档类型的声明"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.<!DOCTYPE HTML>文档类型的声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-默认行高"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.默认行高</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-img的外部border"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.img的外部border</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-经典3像素bug"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.经典3像素bug</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-a标签不适用于所有标签"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.a标签不适用于所有标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-png图片"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.png图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-透明rgba与opacity"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.透明rgba与opacity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-table标签中的border-color属性设置无效"><span class="toc-number">1.0.10.</span> <span class="toc-text">10.table标签中的border-color属性设置无效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-子选择器不能使用"><span class="toc-number">1.0.11.</span> <span class="toc-text">11.子选择器不能使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-不支持最大最小宽高"><span class="toc-number">1.0.12.</span> <span class="toc-text">12.不支持最大最小宽高</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-img图片下部多出5px"><span class="toc-number">1.0.13.</span> <span class="toc-text">13.img图片下部多出5px</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-多显示一个字错误"><span class="toc-number">1.0.14.</span> <span class="toc-text">14.多显示一个字错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-待续"><span class="toc-number">1.0.15.</span> <span class="toc-text">15.待续</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -404,7 +417,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"标签　| 忆十一·Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"IE6常见兼容问题　| 忆十一·Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -423,8 +436,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://lazyman123.github.io/tags/index.html';
-            this.page.identifier = 'tags/index.html';
+            this.page.url = 'http://lazyman123.github.io/2018/03/15/IE6常见兼容问题/';
+            this.page.identifier = '2018/03/15/IE6常见兼容问题/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -441,6 +454,24 @@
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/03/13/何为BFC/" title="下一篇: 何为BFC">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/IE6常见兼容问题/">IE6常见兼容问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/何为BFC/">何为BFC</a></li></ul>
 
 
 
