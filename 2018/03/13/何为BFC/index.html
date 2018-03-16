@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="什么是BFCw3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，两">
+<meta name="description" content="什么是BFC?w3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="何为BFC">
 <meta property="og:url" content="http://lazyman123.github.io/2018/03/13/何为BFC/index.html">
 <meta property="og:site_name" content="忆十一·Blog">
-<meta property="og:description" content="什么是BFCw3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，两">
+<meta property="og:description" content="什么是BFC?w3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-14T02:56:28.599Z">
+<meta property="og:updated_time" content="2018-03-16T15:55:50.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="何为BFC">
-<meta name="twitter:description" content="什么是BFCw3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，两">
+<meta name="twitter:description" content="什么是BFC?w3c规范中的BFC定义浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。 在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -297,7 +297,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC"></a>什么是BFC</h2><h4 id="w3c规范中的BFC定义"><a href="#w3c规范中的BFC定义" class="headerlink" title="w3c规范中的BFC定义"></a>w3c规范中的BFC定义</h4><p>浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。</p>
+        <h2 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC?"></a>什么是BFC?</h2><h4 id="w3c规范中的BFC定义"><a href="#w3c规范中的BFC定义" class="headerlink" title="w3c规范中的BFC定义"></a>w3c规范中的BFC定义</h4><p>浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。</p>
 <p>在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。<br><a id="more"></a><br>在BFC中，每一个盒子的左外边缘（margin-left）会碰触到容器的左边缘（border-left）（对于从右到左的格式来说，则出喷到右边缘）。</p>
 <h3 id="BFC的通俗理解"><a href="#BFC的通俗理解" class="headerlink" title="BFC的通俗理解"></a>BFC的通俗理解</h3><p>首先BFC是一个名词，是一个独立的布局环境，我们可以理解为一个箱子（实际上是看不见的），箱子里面物品的摆放式不受外界影响。转换为BFC的理解是：BFC中的元素是不受外界影响（我们往往利用这个特性来消除浮动元素对其非浮动的兄弟元素和其子元素带来的影响。）并且在一个BFC中，块盒与航和（行盒由一行中所有的内联元素组成）都会垂直的沿着其父元素的边框排列。</p>
 <h3 id="BFC的运用"><a href="#BFC的运用" class="headerlink" title="BFC的运用"></a>BFC的运用</h3><p>在很多网站，我们经常会看到这样的一种，左边图片右边文字的两栏结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">  .box&#123;</div><div class="line">   width:210px;</div><div class="line">   border:1px solid #000;</div><div class="line">   float:left;</div><div class="line">  &#125;</div><div class="line">  .img&#123;</div><div class="line">   width:100px;</div><div class="line">   height:100px;</div><div class="line">   background:#545;</div><div class="line">   float:left;</div><div class="line">   &#125;</div><div class="line">   .info&#123;</div><div class="line">    background:#ccc;</div><div class="line">    color:#fff;</div><div class="line">   &#125;</div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line"> &lt;div class=&quot;img&quot;&gt;image&lt;/div&gt;</div><div class="line"> &lt;p class=&quot;info&quot;&gt;我是一个BFC&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
@@ -332,7 +332,7 @@
         <p><span>本文标题:</span><a href="/2018/03/13/何为BFC/">何为BFC</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">忆十一</a></p>
         <p><span>发布时间:</span>2018-03-13, 18:48:32</p>
-        <p><span>最后更新:</span>2018-03-14, 10:56:28</p>
+        <p><span>最后更新:</span>2018-03-16, 23:55:50</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/13/何为BFC/" title="何为BFC">http://lazyman123.github.io/2018/03/13/何为BFC/</a>
             <span class="copy-path" data-clipboard-text="原文: http://lazyman123.github.io/2018/03/13/何为BFC/　　作者: 忆十一" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -362,7 +362,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是BFC"><span class="toc-number">1.</span> <span class="toc-text">什么是BFC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#w3c规范中的BFC定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">w3c规范中的BFC定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC的通俗理解"><span class="toc-number">1.1.</span> <span class="toc-text">BFC的通俗理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC的运用"><span class="toc-number">1.2.</span> <span class="toc-text">BFC的运用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决margin叠加问题"><span class="toc-number">1.2.1.</span> <span class="toc-text">解决margin叠加问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用于清除浮动，计算BFC高度"><span class="toc-number">1.2.2.</span> <span class="toc-text">用于清除浮动，计算BFC高度</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是BFC"><span class="toc-number">1.</span> <span class="toc-text">什么是BFC?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#w3c规范中的BFC定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">w3c规范中的BFC定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC的通俗理解"><span class="toc-number">1.1.</span> <span class="toc-text">BFC的通俗理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC的运用"><span class="toc-number">1.2.</span> <span class="toc-text">BFC的运用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决margin叠加问题"><span class="toc-number">1.2.1.</span> <span class="toc-text">解决margin叠加问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用于清除浮动，计算BFC高度"><span class="toc-number">1.2.2.</span> <span class="toc-text">用于清除浮动，计算BFC高度</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
