@@ -267,106 +267,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Object.defineProperty()" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/26/Object.defineProperty()/" class="article-date">
-      <time datetime="2018-06-26T00:01:59.160Z" itemprop="datePublished">2018-06-26</time>
-</a>
-
- 
-    <a href="/2018/06/26/Object.defineProperty()/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/06/26/Object.defineProperty()/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h1><p>  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。</p>
-<hr>
-<p>###在ECMAScript中属性有两种</p>
-<h2 id="gt-数据属性"><a href="#gt-数据属性" class="headerlink" title="  &gt;数据属性"></a>  &gt;<strong>数据属性</strong></h2><p>  <strong>数据属性</strong>包含一个数据值的位置，在这个位置可以读取和写入值，数据属性有四个描述其行为的特性</p>
-<ul>
-<li>[[<strong>Configurable</strong>]] : 表示能否通过delete删除属性从而重新定义属性，默认为<strong>true</strong></li>
-<li>[[<strong>Enumerable</strong>]] : 表示能否通过for-in循环返回属性，默认为<strong>true</strong></li>
-<li>[[<strong>Writable</strong>]] : 表示能否修改属性的值，默认为<strong>true</strong></li>
-<li>[[<strong>Value</strong>]] : 属性的数据值，默认值为<strong>undefined</strong></li>
-</ul>
-<blockquote>
-<p><strong>访问器属性</strong></p>
-<hr>
-</blockquote>
-<p><strong>访问器属性</strong>不包含数据值；它包含一对getter和setter函数（<em>这两个函数都不是必须的，也不需要成对出现</em>），在读取访问其属性时，会调用getter函数，这个函数负责返回有效的值，在写入访问器属性时，会调用setter函数并传入新值，这个函数负责决定如何处理数据。在这里让我想起了vue中也有一个getter和setter，vue的双向绑定就是通过object.defineProperty()完成的。</p>
-<ul>
-<li>[[<strong>Configurable</strong>]] : 表示能否通过delete删除属性从而重新定义属性，默认为<strong>true</strong></li>
-<li>[[<strong>Enumerable</strong>]] : 表示能否通过for-in循环返回属性，默认为<strong>true</strong></li>
-<li>[[<strong>Get</strong>]] : 在读取属性时调用的函数，默认为<strong>undefined</strong></li>
-<li>[[<strong>Set</strong>]] : 在读取属性时调用的函数，默认值为<strong>undefined</strong></li>
-</ul>
-<p>通常我们创建一个对象，可以用构造函数或者字面量的形式，当然除了这些还有很多方式如原型模式、工厂模式、构造函数和原型的组合方式等等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = new Object;  //obj = &#123;&#125;</div><div class="line">obj.name = &quot;张三&quot;;  //添加描述</div><div class="line">obj.say = function()&#123;&#125;;  //添加行为</div></pre></td></tr></table></figure>
-<p>###Object.defineProperty(obj, prop, descriptor)</p>
-<hr>
-<p>参数：</p>
-<ul>
-<li><strong>obj</strong>: 目标对象</li>
-<li><strong>prop</strong>: 需要定义或修改的属性名字</li>
-<li><strong>descriptor</strong>: 目标属性所拥有的特性</li>
-</ul>
-<p>返回值：</p>
-<ul>
-<li>传入函数的对象，即第一个参数obj</li>
-</ul>
-<hr>
-<p>####针对<strong>Configurable、Writable</strong>特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var person = &#123;&#125;</div><div class="line">Object.defineProperty(person, &apos;name&apos;, &#123;</div><div class="line">	configurable: false,</div><div class="line">	writalbe: false,</div><div class="line">	value: &apos;xiaoming&apos;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">console.log(person.name) //xiaoming</div><div class="line">person.name = &quot;xiaohong&quot;</div><div class="line">console.log(person.name) //xiaoming</div><div class="line">delete person.name</div><div class="line">console.log(person.name) //xiaoming</div></pre></td></tr></table></figure>
-<p>这个例子创建了一个名为<strong>name</strong>的属性，但是这个属性是只读的，不可修改。而在<strong>configurable</strong>为<strong>false</strong>时，该属性不能被删除。同时在严格模式下，如果尝试给它赋予新值将会抛出错误。</p>
-<hr>
-<p>####针对<strong>Get、Set</strong>特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var book = &#123;</div><div class="line">	_year: 2017,</div><div class="line">	edition: 1</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object.defineProperty(book, &apos;year&apos;, &#123;</div><div class="line">	get: function () &#123;</div><div class="line">		return this._year</div><div class="line">	&#125;,</div><div class="line">	set: function (newValue) &#123;</div><div class="line">		if (newValue &gt; 2017) &#123;</div><div class="line">			this._year = newValue</div><div class="line">			this.edition += newValue - 2017</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">book.year = 2018</div><div class="line">console.log(book.edition) //2</div></pre></td></tr></table></figure>
-<p>以上代码创建了一个book对象，并给它定义了两个属性, _ year 和 edition。_year前面的下划线表示该属性只能被对象方法访问的属性，是一种常用的记号。这是使用访问器的常用方式，即设置一个属性的值会导致其他属性发生变化。</p>
-<hr>
-<p>###此外<br><strong>记我一次见过的面试题</strong><br>==利用给定接口获得闭包的对象==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var o = (function() &#123;</div><div class="line">	var person = &#123;</div><div class="line">		name: &apos;xiaoming&apos;,</div><div class="line">		age: &apos;18&apos;</div><div class="line">	&#125;</div><div class="line">	return &#123;</div><div class="line">		run: function(k) &#123;</div><div class="line">			return person(k)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
-<p>Q:  在不改变上面代码的情况下，怎么得到原有的person对象？<br>A:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(object.prototype, &apos;self&apos;, &#123;</div><div class="line">	get: function() &#123;</div><div class="line">		return this</div><div class="line">	&#125;,</div><div class="line">	configureable: ture</div><div class="line">&#125;)</div><div class="line"></div><div class="line">o.run(&apos;self&apos;) // person</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-call 和 apply" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -414,6 +314,74 @@
       
       
       
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Object.defineProperty()" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/20/Object.defineProperty()/" class="article-date">
+      <time datetime="2018-06-20T04:48:32.000Z" itemprop="datePublished">2018-06-20</time>
+</a>
+
+ 
+    <a href="/2018/06/20/Object.defineProperty()/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+        
+            <span class="disqus-comment-count" data-disqus-identifier="2018/06/20/Object.defineProperty()/"></span>
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/20/Object.defineProperty()/">Object.defineProperty()</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h1><p>  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a href="/2018/06/20/Object.defineProperty()/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
