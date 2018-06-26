@@ -14,20 +14,18 @@
 <meta name="author" content="忆十一" />
 
 
-    
-    
 
-
-<meta name="description" content="相自我改,命自我造.">
-<meta property="og:type" content="website">
+<meta name="description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。  ###在ECMAScript中属性有两种   &amp;gt;数据属性  数据属性包含一个数据值的位置，在这个位置可以读取和写入值，数据属性有四个描述其行为的特性  [[Configurable]] : 表示能否通过">
+<meta property="og:type" content="article">
 <meta property="og:title" content="忆十一·Blog">
-<meta property="og:url" content="http://lazyman123.github.io/index.html">
+<meta property="og:url" content="http://lazyman123.github.io/2018/06/26/Object.defineProperty()/index.html">
 <meta property="og:site_name" content="忆十一·Blog">
-<meta property="og:description" content="相自我改,命自我造.">
+<meta property="og:description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。  ###在ECMAScript中属性有两种   &amp;gt;数据属性  数据属性包含一个数据值的位置，在这个位置可以读取和写入值，数据属性有四个描述其行为的特性  [[Configurable]] : 表示能否通过">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-26T04:29:05.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="忆十一·Blog">
-<meta name="twitter:description" content="相自我改,命自我造.">
+<meta name="twitter:description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。  ###在ECMAScript中属性有两种   &amp;gt;数据属性  数据属性包含一个数据值的位置，在这个位置可以读取和写入值，数据属性有四个描述其行为的特性  [[Configurable]] : 表示能否通过">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,8 +53,6 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
@@ -70,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -265,24 +261,13 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Object.defineProperty()" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Object.defineProperty()" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2018/06/26/Object.defineProperty()/" class="article-date">
       <time datetime="2018-06-26T00:01:59.160Z" itemprop="datePublished">2018-06-26</time>
 </a>
 
- 
-    <a href="/2018/06/26/Object.defineProperty()/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/06/26/Object.defineProperty()/"></span>
-        
-    </a>
 
     </div>
   
@@ -346,222 +331,85 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-call 和 apply" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/25/call 和 apply/" class="article-date">
-      <time datetime="2018-06-25T03:18:32.000Z" itemprop="datePublished">2018-06-25</time>
-</a>
-
- 
-    <a href="/2018/06/25/call 和 apply/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/06/25/call 和 apply/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/call 和 apply/">JS中的 call 和 apply</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="基本作用"><a href="#基本作用" class="headerlink" title="基本作用"></a>基本作用</h2><p>改变对象的执行上下文</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IE6常见兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/15/IE6常见兼容问题/" class="article-date">
-      <time datetime="2018-03-15T10:48:32.000Z" itemprop="datePublished">2018-03-15</time>
-</a>
-
- 
-    <a href="/2018/03/15/IE6常见兼容问题/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/03/15/IE6常见兼容问题/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/15/IE6常见兼容问题/">IE6常见兼容问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="IE6常见兼容问题"><a href="#IE6常见兼容问题" class="headerlink" title="IE6常见兼容问题"></a>IE6常见兼容问题</h2><h4 id="1-margin加倍问题"><a href="#1-margin加倍问题" class="headerlink" title="1.margin加倍问题"></a>1.margin加倍问题</h4><blockquote>
-<p>解决方法：设置为float的div在IE下设置的margin会加倍，这是一个IE6都存在的bug。解决方案是在这个div里面加上display：inline；</p>
-</blockquote>
-<h4 id="2-子集中有设置position，则父级overflow失效"><a href="#2-子集中有设置position，则父级overflow失效" class="headerlink" title="2.子集中有设置position，则父级overflow失效"></a>2.子集中有设置position，则父级overflow失效</h4>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/03/15/IE6常见兼容问题/#more">阅读全文 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/26/Object.defineProperty()/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">忆十一</a></p>
+        <p><span>发布时间:</span>2018-06-26, 08:01:59</p>
+        <p><span>最后更新:</span>2018-06-26, 12:29:05</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/26/Object.defineProperty()/" title="">http://lazyman123.github.io/2018/06/26/Object.defineProperty()/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lazyman123.github.io/2018/06/26/Object.defineProperty()/　　作者: 忆十一" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-何为BFC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/13/何为BFC/" class="article-date">
-      <time datetime="2018-03-13T10:48:32.000Z" itemprop="datePublished">2018-03-13</time>
-</a>
-
- 
-    <a href="/2018/03/13/何为BFC/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2018/03/13/何为BFC/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/13/何为BFC/">何为BFC</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC?"></a>什么是BFC?</h2><h4 id="w3c规范中的BFC定义"><a href="#w3c规范中的BFC定义" class="headerlink" title="w3c规范中的BFC定义"></a>w3c规范中的BFC定义</h4><p>浮动元素和绝对定位元素，非块级盒子的块级容器（如：inline-block，table-cells,和table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们创建新的BFC（块级格式上下文）。</p>
-<p>在BFC中，盒子从顶端开始垂直地一个接一个的排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/03/13/何为BFC/#more">阅读全文 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/06/25/call 和 apply/">
+                    JS中的 call 和 apply
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-defineProperty"><span class="toc-number">1.</span> <span class="toc-text">Object.defineProperty()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-数据属性"><span class="toc-number">1.1.</span> <span class="toc-text">  >数据属性</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| 忆十一·Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
@@ -569,9 +417,55 @@
 
 
 
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://lazyman123.github.io/2018/06/26/Object.defineProperty()/';
+            this.page.identifier = '2018/06/26/Object.defineProperty()/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
 
-  
-  
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/06/25/call 和 apply/" title="下一篇: JS中的 call 和 apply">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Object.defineProperty()/">Object.defineProperty()</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/call 和 apply/">JS中的 call 和 apply</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/IE6常见兼容问题/">IE6常见兼容问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/何为BFC/">何为BFC</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -609,26 +503,6 @@
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-
-    
-
-    
-        <script id="dsq-count-scr" src="//.disqus.com/count.js" async></script>
-        <script>
-            if ($(".left-col").is(":visible")) {
-                var $disqusCount = $(".disqus-comment-count");
-                $disqusCount.bind("DOMNodeInserted", function(e) {
-                    var num = $(this).text().replace(/[^0-9]/ig,"");
-                    if (num > 0) {
-                        $(this).siblings(".count-comment").text(num);
-                    }
-                    $(this).remove();
-                })
-            } else {
-                $(".disqus-comment-count").remove();
-            }
-        </script>
-     
 
 
 
