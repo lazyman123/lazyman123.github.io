@@ -114,18 +114,18 @@
 
 
 
-  <meta name="description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境） 首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码： 12345function func() &amp;">
+  <meta name="description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS中的 call 和 apply">
 <meta property="og:url" content="http://lazyman123.github.io/2018/06/25/call 和 apply/index.html">
 <meta property="og:site_name" content="saner·Blog">
-<meta property="og:description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境） 首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码： 12345function func() &amp;">
+<meta property="og:description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-05T08:31:07.036Z">
+<meta property="og:updated_time" content="2018-07-05T08:33:37.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中的 call 和 apply">
-<meta name="twitter:description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境） 首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码： 12345function func() &amp;">
+<meta name="twitter:description" content="基本作用想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用： 改变对象的执行上下文 什么是执行上下文？我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）">
 
 
 
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-05 16:31:07" itemprop="dateModified" datetime="2018-07-05T16:31:07+08:00">2018-07-05</time>
+                <time title="修改时间：2018-07-05 16:33:37" itemprop="dateModified" datetime="2018-07-05T16:33:37+08:00">2018-07-05</time>
               
             
           </span>
@@ -432,8 +432,7 @@
 <!-- <img src="http://saner.xyz/img/article/1.JPG" height="300"> -->
 <h1 id="基本作用"><a href="#基本作用" class="headerlink" title="基本作用"></a>基本作用</h1><p>想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用：</p>
 <p><strong>改变对象的执行上下文</strong></p>
-<h2 id="什么是执行上下文？"><a href="#什么是执行上下文？" class="headerlink" title="什么是执行上下文？"></a>什么是执行上下文？</h2><p>我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）</p>
-<p>首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码：</p>
+<h2 id="什么是执行上下文？"><a href="#什么是执行上下文？" class="headerlink" title="什么是执行上下文？"></a>什么是执行上下文？</h2><p>我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）<br><a id="more"></a><br>首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function func() &#123;</div><div class="line">	this.a = 1;</div><div class="line">	console.log(this.a);</div><div class="line">&#125;</div><div class="line">	func(); //1</div></pre></td></tr></table></figure>
 <p>代码中方法执行后控制台输出1，由于func是全局对象window下的一个方法，那么调用该方法的对象就应该是全局对象window，所以this理论上指向的对象就应该是window</p>
 <p>如果理论成立，而this.a = 1， 也就是说a变量是一个全局变量。在控制台直接输入a或者window.a后回车，会发现输出了1，所以在func这个方法中，this的指向是window</p>

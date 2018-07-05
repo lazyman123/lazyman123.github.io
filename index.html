@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-05 16:31:07" itemprop="dateModified" datetime="2018-07-05T16:31:07+08:00">2018-07-05</time>
+                <time title="修改时间：2018-07-05 16:33:37" itemprop="dateModified" datetime="2018-07-05T16:33:37+08:00">2018-07-05</time>
               
             
           </span>
@@ -432,52 +432,18 @@
 
       
         
-          
-            <!-- ![](/img/article/1.JPG) -->
+          <!-- ![](/img/article/1.JPG) -->
 <!-- <img src="http://saner.xyz/img/article/1.JPG" height="300"> -->
 <h1 id="基本作用"><a href="#基本作用" class="headerlink" title="基本作用"></a>基本作用</h1><p>想要深入了解call()和apply() 这两个方法，那么必须要先知道他们的基本作用：</p>
 <p><strong>改变对象的执行上下文</strong></p>
-<h2 id="什么是执行上下文？"><a href="#什么是执行上下文？" class="headerlink" title="什么是执行上下文？"></a>什么是执行上下文？</h2><p>我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）</p>
-<p>首先我们要知道，this指向的永远是调用该方法的对象，如何证明this的指向就是当前对象呢？如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function func() &#123;</div><div class="line">	this.a = 1;</div><div class="line">	console.log(this.a);</div><div class="line">&#125;</div><div class="line">	func(); //1</div></pre></td></tr></table></figure>
-<p>代码中方法执行后控制台输出1，由于func是全局对象window下的一个方法，那么调用该方法的对象就应该是全局对象window，所以this理论上指向的对象就应该是window</p>
-<p>如果理论成立，而this.a = 1， 也就是说a变量是一个全局变量。在控制台直接输入a或者window.a后回车，会发现输出了1，所以在func这个方法中，this的指向是window</p>
-<p>换个方式来验证下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">	name: &apos;xiao ming&apos;,</div><div class="line">	age: 18,</div><div class="line">	who: function () &#123;</div><div class="line">		console.log(person === this)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.who(); //true</div></pre></td></tr></table></figure>
-<p>上面这段代码中who方法person对象的一个属性，被person对象调用，所以this的指向也就是person。</p>
-<h2 id="为什么需要改变执行上下文？"><a href="#为什么需要改变执行上下文？" class="headerlink" title="为什么需要改变执行上下文？"></a>为什么需要改变执行上下文？</h2><p>简单的说，方便。举个🌰，但不代表所有场景。<br>小明有一个炒菜的铲子，小明的室友小刚今天想自己做菜吃，但是小刚没有铲子。小刚不想为了做个菜单独买把铲子，于是就借用了小明的铲子，这样既达到了目的，又节省了开支，一举两得。</p>
-<p>改变执行上下文也是一样，A对象有一个方法，而B对象因为某种不可言说的情况也需要用到一样的方法，那么这时候我们是单独为B扩展个方法呢，还是借用一下A的方法呢？当然是借用A的啦，即完成了需求，又减少了内存的占用</p>
-<h2 id="call-与apply-异同"><a href="#call-与apply-异同" class="headerlink" title="call()与apply()异同"></a>call()与apply()异同</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p><strong>call()</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function.call(obj[,arg1[,arg2[, [,.argN]]]])</div></pre></td></tr></table></figure>
-<ul>
-<li>调用call的对象必须是个函数function</li>
-<li>call的第一个参数将会是function改变上下文后指向的对象，如果不传，将会默认是全局对象window</li>
-<li>第二个参数开始可以接受任意个参数，这些参数将会作为function的参数传入function</li>
-<li>调用call的方法会立即执行</li>
-</ul>
-<p><strong>apply()</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function.apply(obj[,argArray)</div></pre></td></tr></table></figure>
-<p>与call方法的使用基本一致，但是只接收两个参数，其中第二个参数必须是一个数组或者<strong>类数组</strong>，这也是这两个方法很重要的一个区别</p>
-<p><strong>数组与类数组小科普</strong></p>
-<p>数组我们都知道是什么，它的特征都有哪些呢？</p>
-<p>1.可以通过角标调用，如array[0]<br>2.具有长度属性length<br>3.可以通过for循环和forEach方法进行遍历</p>
-<p>类数组顾名思义，具备的特征应该与数组基本相同，那么可以知道，一个形如下面这个对象的对象就是一个类数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var arrayLike = &#123;</div><div class="line">	0: &apos;item1&apos;,</div><div class="line">	1: &apos;item2&apos;,</div><div class="line">	3: &apos;item3&apos;,</div><div class="line">	length: 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>类数组arrayLike可以通过角标进行调用，具有length属性，同时也可以通过for循环进行遍历</p>
-<p>我们经常使用的获取dom节点的方法返回的就是一个类数组，在一个方法中使用arguments关键字获取到的该方法的所有参数也是一个类数组</p>
-<p>但是类数组却不能通过forEach进行遍历，因为forEach是数组原型链上的方法，类数组毕竟不是数组，所以无法使用</p>
-<p>那么如何才能让类数组能够使用forEach呢？<br>Array.prototype.forEach.call(类数组)</p>
-<p>##异同<br><strong>相同点</strong><br>都能够改变方法的执行上下文（执行环境），讲一个对象的方法交给另一个对象来执行，并且是立即执行</p>
-<p><strong>不同点</strong><br>call方法从第二个参数开始可以接受任意个参数，每个参数会映射到相应位置的func的参数上，可以通过参数名调用，但是如果将所有的参数作为数组传入，他们会作为一个整体映射到func对应的第一个参数上，之后参数都为空</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function func(a, b, c) &#123;&#125;</div><div class="line"></div><div class="line">func.call(obj, 1,2,3)</div><div class="line">// function接收到的参数实际上是 1,2,3</div><div class="line"></div><div class="line">func.call(obj, [1,2,3])</div><div class="line">// function接收到的参数实际上是 [1,2,3],undefined,undefined</div></pre></td></tr></table></figure>
-<p>apply方法最多只有两个参数，第二个参数接受数组或者类数组，但是都会被转成类数组传入func中，并且会映射到func对应的参数上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func.apply(obj, [1,2,3])</div><div class="line">// function 接收到的参数实际上是1，2，3</div><div class="line"></div><div class="line">func.apply(obj, &#123;</div><div class="line">	0: 1,</div><div class="line">	1: 2,</div><div class="line">	2: 3,</div><div class="line">	length: 3</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// function接收到的参数实际上是1，2，3</div></pre></td></tr></table></figure>
-<h2 id="两个方法该如何选择？"><a href="#两个方法该如何选择？" class="headerlink" title="两个方法该如何选择？"></a>两个方法该如何选择？</h2><p>根据你要传入的参数来做选择，不需要传参或者只有一个参数的时候，用call，当要传入多个对象的时候，用apply</p>
-<h1 id="其他用途–对象继承"><a href="#其他用途–对象继承" class="headerlink" title="其他用途–对象继承"></a>其他用途–对象继承</h1><p>由于可以改变this的指向，所以也就可以实现对象的继承</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function superClass () &#123;</div><div class="line">	this.a =	1;</div><div class="line">	this.print = function () &#123;</div><div class="line">		console.log(this.a)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function subClass () &#123;</div><div class="line">	superClass.call(this);</div><div class="line">	this.print();</div><div class="line">&#125;</div><div class="line"></div><div class="line">subClass();</div></pre></td></tr></table></figure>
-<p>subClass通过call方法，继承了superClass的print方法和a变量，同时subClass还可以扩展自己的方法</p>
-
-          
+<h2 id="什么是执行上下文？"><a href="#什么是执行上下文？" class="headerlink" title="什么是执行上下文？"></a>什么是执行上下文？</h2><p>我们在写一个方法的时候，总是会用到一个关键字this，而this的指向就是我们这里所说的执行上下文（执行环境）<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/call 和 apply/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
