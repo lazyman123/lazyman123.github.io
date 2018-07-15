@@ -114,25 +114,25 @@
 
 
 
-  <meta name="description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。">
-<meta name="keywords" content="JS">
+  <meta name="description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
+<meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object.defineProperty()">
-<meta property="og:url" content="http://lazyman123.github.io/2018/06/20/Object.defineProperty()/index.html">
+<meta property="og:title" content="new Vue 发生了什么">
+<meta property="og:url" content="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/index.html">
 <meta property="og:site_name" content="saner·Blog">
-<meta property="og:description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。">
+<meta property="og:description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T13:15:20.921Z">
+<meta property="og:updated_time" content="2018-07-15T15:34:43.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Object.defineProperty()">
-<meta name="twitter:description" content="Object.defineProperty()  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。">
+<meta name="twitter:title" content="new Vue 发生了什么">
+<meta name="twitter:description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://lazyman123.github.io/2018/06/20/Object.defineProperty()/"/>
+  <link rel="canonical" href="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/"/>
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>Object.defineProperty() | saner·Blog</title>
+  <title>new Vue 发生了什么 | saner·Blog</title>
   
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/06/20/Object.defineProperty()/">
+    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="saner">
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Object.defineProperty()
+          <h1 class="post-title" itemprop="name headline">new Vue 发生了什么
               
             
           </h1>
@@ -358,24 +358,12 @@
                 
               
 
-              <time title="创建时间：2018-06-20 12:48:32" itemprop="dateCreated datePublished" datetime="2018-06-20T12:48:32+08:00">2018-06-20</time>
+              <time title="创建时间：2018-07-15 23:30:34 / 修改时间：23:34:43" itemprop="dateCreated datePublished" datetime="2018-07-15T23:30:34+08:00">2018-07-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-26 21:15:20" itemprop="dateModified" datetime="2018-06-26T21:15:20+08:00">2018-06-26</time>
               
             
           </span>
@@ -392,7 +380,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Javascript探索之路/" itemprop="url" rel="index"><span itemprop="name">Javascript探索之路</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深入浅出Vue/" itemprop="url" rel="index"><span itemprop="name">深入浅出Vue</span></a></span>
 
                 
                 
@@ -428,55 +416,11 @@
       
 
       
-        <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h1><p>  MDN上的解释是Object.defineProperty()会直接在对象上定义一个新的属性，或者修改一个对象的现有属性，并返回这个对象。</p>
-<a id="more"></a>
-<hr>
-<p>###在ECMAScript中属性有两种</p>
-<h2 id="gt-数据属性"><a href="#gt-数据属性" class="headerlink" title="  &gt;数据属性"></a>  &gt;<strong>数据属性</strong></h2><p>  <strong>数据属性</strong>包含一个数据值的位置，在这个位置可以读取和写入值，数据属性有四个描述其行为的特性</p>
-<ul>
-<li>[[<strong>Configurable</strong>]] : 表示能否通过delete删除属性从而重新定义属性，默认为<strong>true</strong></li>
-<li>[[<strong>Enumerable</strong>]] : 表示能否通过for-in循环返回属性，默认为<strong>true</strong></li>
-<li>[[<strong>Writable</strong>]] : 表示能否修改属性的值，默认为<strong>true</strong></li>
-<li>[[<strong>Value</strong>]] : 属性的数据值，默认值为<strong>undefined</strong></li>
-</ul>
-<blockquote>
-<p><strong>访问器属性</strong></p>
-<hr>
-</blockquote>
-<p><strong>访问器属性</strong>不包含数据值；它包含一对getter和setter函数（<em>这两个函数都不是必须的，也不需要成对出现</em>），在读取访问其属性时，会调用getter函数，这个函数负责返回有效的值，在写入访问器属性时，会调用setter函数并传入新值，这个函数负责决定如何处理数据。在这里让我想起了vue中也有一个getter和setter，vue的双向绑定就是通过object.defineProperty()完成的。</p>
-<ul>
-<li>[[<strong>Configurable</strong>]] : 表示能否通过delete删除属性从而重新定义属性，默认为<strong>true</strong></li>
-<li>[[<strong>Enumerable</strong>]] : 表示能否通过for-in循环返回属性，默认为<strong>true</strong></li>
-<li>[[<strong>Get</strong>]] : 在读取属性时调用的函数，默认为<strong>undefined</strong></li>
-<li>[[<strong>Set</strong>]] : 在读取属性时调用的函数，默认值为<strong>undefined</strong></li>
-</ul>
-<p>通常我们创建一个对象，可以用构造函数或者字面量的形式，当然除了这些还有很多方式如原型模式、工厂模式、构造函数和原型的组合方式等等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = new Object;  //obj = &#123;&#125;</div><div class="line">obj.name = &quot;张三&quot;;  //添加描述</div><div class="line">obj.say = function()&#123;&#125;;  //添加行为</div></pre></td></tr></table></figure>
-<p>###Object.defineProperty(obj, prop, descriptor)</p>
-<hr>
-<p>参数：</p>
-<ul>
-<li><strong>obj</strong>: 目标对象</li>
-<li><strong>prop</strong>: 需要定义或修改的属性名字</li>
-<li><strong>descriptor</strong>: 目标属性所拥有的特性</li>
-</ul>
-<p>返回值：</p>
-<ul>
-<li>传入函数的对象，即第一个参数obj</li>
-</ul>
-<hr>
-<p>####针对<strong>Configurable、Writable</strong>特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var person = &#123;&#125;</div><div class="line">Object.defineProperty(person, &apos;name&apos;, &#123;</div><div class="line">	configurable: false,</div><div class="line">	writalbe: false,</div><div class="line">	value: &apos;xiaoming&apos;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">console.log(person.name) //xiaoming</div><div class="line">person.name = &quot;xiaohong&quot;</div><div class="line">console.log(person.name) //xiaoming</div><div class="line">delete person.name</div><div class="line">console.log(person.name) //xiaoming</div></pre></td></tr></table></figure>
-<p>这个例子创建了一个名为<strong>name</strong>的属性，但是这个属性是只读的，不可修改。而在<strong>configurable</strong>为<strong>false</strong>时，该属性不能被删除。同时在严格模式下，如果尝试给它赋予新值将会抛出错误。</p>
-<hr>
-<p>####针对<strong>Get、Set</strong>特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var book = &#123;</div><div class="line">	_year: 2017,</div><div class="line">	edition: 1</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object.defineProperty(book, &apos;year&apos;, &#123;</div><div class="line">	get: function () &#123;</div><div class="line">		return this._year</div><div class="line">	&#125;,</div><div class="line">	set: function (newValue) &#123;</div><div class="line">		if (newValue &gt; 2017) &#123;</div><div class="line">			this._year = newValue</div><div class="line">			this.edition += newValue - 2017</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">book.year = 2018</div><div class="line">console.log(book.edition) //2</div></pre></td></tr></table></figure>
-<p>以上代码创建了一个book对象，并给它定义了两个属性, _ year 和 edition。_year前面的下划线表示该属性只能被对象方法访问的属性，是一种常用的记号。这是使用访问器的常用方式，即设置一个属性的值会导致其他属性发生变化。</p>
-<hr>
-<p>###此外<br><strong>记我一次见过的面试题</strong><br>==利用给定接口获得闭包的对象==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var o = (function() &#123;</div><div class="line">	var person = &#123;</div><div class="line">		name: &apos;xiaoming&apos;,</div><div class="line">		age: &apos;18&apos;</div><div class="line">	&#125;</div><div class="line">	return &#123;</div><div class="line">		run: function(k) &#123;</div><div class="line">			return person(k)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
-<p>Q:  在不改变上面代码的情况下，怎么得到原有的person对象？<br>A:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(object.prototype, &apos;self&apos;, &#123;</div><div class="line">	get: function() &#123;</div><div class="line">		return this</div><div class="line">	&#125;,</div><div class="line">	configureable: ture</div><div class="line">&#125;)</div><div class="line"></div><div class="line">o.run(&apos;self&apos;) // person</div></pre></td></tr></table></figure>
+        <h1 id="new-Vue-发生了什么"><a href="#new-Vue-发生了什么" class="headerlink" title="new Vue 发生了什么"></a>new Vue 发生了什么</h1><p>从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在<span style="color: red;background:#EEE;">src/core/instance/index.js</span>中。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Vue (options) &#123;</div><div class="line">	if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; !(this instance of Vue)) &#123;</div><div class="line">		warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;)</div><div class="line">	&#125;</div><div class="line">	this._init(options)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到Vue只能通过new关键字初始化，然后调用this._init方法，该方法在<span style="color: red;background:#EEE;">src/core/instance/init.js</span>中定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Vue.prototype._init = function (options?: Object) &#123;</div><div class="line">	const vm: Component = this</div><div class="line">	// a uid</div><div class="line">	vm._uid = uid++</div><div class="line">	</div><div class="line">	let startTag, endTag</div><div class="line">	/* istanbul ignore if */</div><div class="line">	if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; config.performance &amp;&amp; mark) &#123;</div><div class="line">		startTag = `vue-perf-start:$&#123;vm._uid&#125;`</div><div class="line">		endTag = `vue-perf-end:$&#123;vm._uid&#125;`</div><div class="line">		mark&#123;startTag&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	// a flag to avoid this being observed</div><div class="line">	vm._isVue = true</div><div class="line">	// merge options</div><div class="line">	if (options &amp;&amp; options._isComponent) &#123;</div><div class="line">		// optimize internal component instantiation</div><div class="line">		// since dynamic options merging is pretty slow, and none of the</div><div class="line">		// internal component options needs special treatment.</div><div class="line">		initInternalComponent(vm, options)</div><div class="line">	&#125; else &#123;</div><div class="line">		vm.$options = mergeOptions(</div><div class="line">			resolveConstructorOptions(vm.constructor),</div><div class="line">			options || &#123;&#125;</div><div class="line">			vm</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Vue 初始化主要就是干了几件事，合并配置，初始化生命周期，初始化事件中心，初始化渲染，初始化data、props、computed、watcher等等。</strong></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>Vue的初始化逻辑写的非常清楚，把不同的功能逻辑拆分成一些单独的函数执行，让主线逻辑一目了然。</strong></p>
 
       
     </div>
@@ -497,7 +441,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag"># JS</a>
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
           
         </div>
       
@@ -510,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/15/IE6常见兼容问题/" rel="next" title="IE6常见兼容问题">
-                <i class="fa fa-chevron-left"></i> IE6常见兼容问题
+              <a href="/2018/07/08/CSS中的TabIndex属性/" rel="next" title="CSS中的TabIndex">
+                <i class="fa fa-chevron-left"></i> CSS中的TabIndex
               </a>
             
           </div>
@@ -519,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/25/call 和 apply/" rel="prev" title="JS中的 call 和 apply">
-                JS中的 call 和 apply <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -687,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">1.</span> <span class="nav-text">Object.defineProperty()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-数据属性"><span class="nav-number">1.1.</span> <span class="nav-text">  >数据属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-Vue-发生了什么"><span class="nav-number">1.</span> <span class="nav-text">new Vue 发生了什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
