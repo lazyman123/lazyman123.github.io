@@ -114,25 +114,25 @@
 
 
 
-  <meta name="description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
+  <meta name="description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="new Vue 发生了什么">
-<meta property="og:url" content="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/index.html">
+<meta property="og:title" content="Virtual DOM">
+<meta property="og:url" content="http://lazyman123.github.io/2018/07/23/Virtual DOM/index.html">
 <meta property="og:site_name" content="saner·Blog">
-<meta property="og:description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
+<meta property="og:description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T15:34:43.305Z">
+<meta property="og:updated_time" content="2018-07-23T15:43:06.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="new Vue 发生了什么">
-<meta name="twitter:description" content="new Vue 发生了什么从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在src/core/instance/index.js中。">
+<meta name="twitter:title" content="Virtual DOM">
+<meta name="twitter:description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
 
 
 
 
 
 
-  <link rel="canonical" href="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/"/>
+  <link rel="canonical" href="http://lazyman123.github.io/2018/07/23/Virtual DOM/"/>
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>new Vue 发生了什么 | saner·Blog</title>
+  <title>Virtual DOM | saner·Blog</title>
   
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/07/15/new Vue发生了什么/">
+    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/07/23/Virtual DOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="saner">
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">new Vue 发生了什么
+          <h1 class="post-title" itemprop="name headline">Virtual DOM
               
             
           </h1>
@@ -358,7 +358,7 @@
                 
               
 
-              <time title="创建时间：2018-07-15 23:30:34 / 修改时间：23:34:43" itemprop="dateCreated datePublished" datetime="2018-07-15T23:30:34+08:00">2018-07-15</time>
+              <time title="创建时间：2018-07-23 11:42:01 / 修改时间：23:43:06" itemprop="dateCreated datePublished" datetime="2018-07-23T11:42:01+08:00">2018-07-23</time>
             
 
             
@@ -420,11 +420,12 @@
       
 
       
-        <h1 id="new-Vue-发生了什么"><a href="#new-Vue-发生了什么" class="headerlink" title="new Vue 发生了什么"></a>new Vue 发生了什么</h1><p>从入口代码开始分析，我们来分析new Vue背后发生了哪些事情。我们都知道，new关键字在JavaScript语言中代表实例化是一个对象，而Vue实际上是一个类，类在JavaScript中是Function来实现的，来看一下源码，在<span style="color: red;background:#EEE;">src/core/instance/index.js</span>中。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Vue (options) &#123;</div><div class="line">	if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; !(this instance of Vue)) &#123;</div><div class="line">		warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;)</div><div class="line">	&#125;</div><div class="line">	this._init(options)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以看到Vue只能通过new关键字初始化，然后调用this._init方法，该方法在<span style="color: red;background:#EEE;">src/core/instance/init.js</span>中定义。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Vue.prototype._init = function (options?: Object) &#123;</div><div class="line">	const vm: Component = this</div><div class="line">	// a uid</div><div class="line">	vm._uid = uid++</div><div class="line">	</div><div class="line">	let startTag, endTag</div><div class="line">	/* istanbul ignore if */</div><div class="line">	if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; config.performance &amp;&amp; mark) &#123;</div><div class="line">		startTag = `vue-perf-start:$&#123;vm._uid&#125;`</div><div class="line">		endTag = `vue-perf-end:$&#123;vm._uid&#125;`</div><div class="line">		mark&#123;startTag&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	// a flag to avoid this being observed</div><div class="line">	vm._isVue = true</div><div class="line">	// merge options</div><div class="line">	if (options &amp;&amp; options._isComponent) &#123;</div><div class="line">		// optimize internal component instantiation</div><div class="line">		// since dynamic options merging is pretty slow, and none of the</div><div class="line">		// internal component options needs special treatment.</div><div class="line">		initInternalComponent(vm, options)</div><div class="line">	&#125; else &#123;</div><div class="line">		vm.$options = mergeOptions(</div><div class="line">			resolveConstructorOptions(vm.constructor),</div><div class="line">			options || &#123;&#125;</div><div class="line">			vm</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>Vue 初始化主要就是干了几件事，合并配置，初始化生命周期，初始化事件中心，初始化渲染，初始化data、props、computed、watcher等等。</strong></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>Vue的初始化逻辑写的非常清楚，把不同的功能逻辑拆分成一些单独的函数执行，让主线逻辑一目了然。</strong></p>
+        <h1 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h1><p>真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。</p>
+<p>而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 <strong>VNode</strong> 这么一个 Class 去描述，它是定义在 src/core/vdom/vnode.js 中的。<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">VNode</span> </span>&#123;</div><div class="line">  tag: string | <span class="keyword">void</span>;</div><div class="line">  data: VNodeData | <span class="keyword">void</span>;</div><div class="line">  children: ?<span class="built_in">Array</span>&lt;VNode&gt;;</div><div class="line">  text: string | <span class="keyword">void</span>;</div><div class="line">  elm: Node | <span class="keyword">void</span>;</div><div class="line">  ns: string | <span class="keyword">void</span>;</div><div class="line">  context: Component | <span class="keyword">void</span>; <span class="comment">// rendered in this component's scope</span></div><div class="line">  key: string | number | <span class="keyword">void</span>;</div><div class="line">  componentOptions: VNodeComponentOptions | <span class="keyword">void</span>;</div><div class="line">  componentInstance: Component | <span class="keyword">void</span>; <span class="comment">// component instance</span></div><div class="line">  parent: VNode | <span class="keyword">void</span>; <span class="comment">// component placeholder node</span></div><div class="line"></div><div class="line">  <span class="comment">// strictly internal</span></div><div class="line">  raw: boolean; <span class="comment">// contains raw HTML? (server only)</span></div><div class="line">  isStatic: boolean; <span class="comment">// hoisted static node</span></div><div class="line">  isRootInsert: boolean; <span class="comment">// necessary for enter transition check</span></div><div class="line">  isComment: boolean; <span class="comment">// empty comment placeholder?</span></div><div class="line">  isCloned: boolean; <span class="comment">// is a cloned node?</span></div><div class="line">  isOnce: boolean; <span class="comment">// is a v-once node?</span></div><div class="line">  asyncFactory: <span class="built_in">Function</span> | <span class="keyword">void</span>; <span class="comment">// async component factory function</span></div><div class="line">  asyncMeta: <span class="built_in">Object</span> | <span class="keyword">void</span>;</div><div class="line">  isAsyncPlaceholder: boolean;</div><div class="line">  ssrContext: <span class="built_in">Object</span> | <span class="keyword">void</span>;</div><div class="line">  fnContext: Component | <span class="keyword">void</span>; <span class="comment">// real context vm for functional nodes</span></div><div class="line">  fnOptions: ?ComponentOptions; <span class="comment">// for SSR caching</span></div><div class="line">  fnScopeId: ?string; <span class="comment">// functional scope id support</span></div></pre></td></tr></table></figure>
+<p>可以看到 Vue.js 中的 Virtual DOM 的定义还是略微复杂一些的，因为它这里包含了很多 Vue.js 的特性。这里千万不要被这些茫茫多的属性吓到，实际上 Vue.js 中 Virtual DOM 是借鉴了一个开源库 snabbdom 的实现，然后加入了一些 Vue.js 特色的东西。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实 VNode 是对真实 DOM 的一种抽象描述，它的核心定义无非就几个关键属性，标签名、数据、子节点、键值等，其它属性都是都是用来扩展 VNode 的灵活性以及实现一些特殊 feature 的。由于 VNode 只是用来映射到真实 DOM 的渲染，不需要包含操作 DOM 的方法，因此它是非常轻量和简单的。</p>
+<p>Virtual DOM 除了它的数据结构的定义，映射到真实的 DOM 实际上要经历 VNode 的 create、diff、patch 等过程。那么在 Vue.js 中，VNode 的 create 是通过之前提到的 createElement 方法创建的，我们接下来分析这部分的实现。</p>
 
       
     </div>
@@ -458,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/08/CSS中的TabIndex属性/" rel="next" title="CSS中的TabIndex">
-                <i class="fa fa-chevron-left"></i> CSS中的TabIndex
+              <a href="/2018/07/22/Vue之render方法/" rel="next" title="Vue之render方法">
+                <i class="fa fa-chevron-left"></i> Vue之render方法
               </a>
             
           </div>
@@ -467,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/16/JavaScript之闭包/" rel="prev" title="JavaScript之闭包">
-                JavaScript之闭包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -637,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-Vue-发生了什么"><span class="nav-number">1.</span> <span class="nav-text">new Vue 发生了什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">1.</span> <span class="nav-text">Virtual DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
