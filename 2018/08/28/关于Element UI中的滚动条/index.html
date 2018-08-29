@@ -114,25 +114,30 @@
 
 
 
-  <meta name="description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
-<meta name="keywords" content="Vue">
+  <meta name="description" content="Element UI 中滚动条在使用vue + element开发项目时，需要对滚动条进行美化，找了一下element文档没找到相关滚动组件，但是文档中肯定是有用到的，如下图 &amp;lt;div style=&amp;quot;height:100%;&amp;quot;&amp;gt;     &amp;lt;el-scrollbar class=&amp;quot;m-scroll&amp;quot; style=&amp;quot;height:10">
+<meta name="keywords" content="Element UI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Virtual DOM">
-<meta property="og:url" content="http://lazyman123.github.io/2018/07/23/Virtual DOM/index.html">
+<meta property="og:title" content="Element UI中的滚动条">
+<meta property="og:url" content="http://lazyman123.github.io/2018/08/28/关于Element UI中的滚动条/index.html">
 <meta property="og:site_name" content="saner·Blog">
-<meta property="og:description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
+<meta property="og:description" content="Element UI 中滚动条在使用vue + element开发项目时，需要对滚动条进行美化，找了一下element文档没找到相关滚动组件，但是文档中肯定是有用到的，如下图 &amp;lt;div style=&amp;quot;height:100%;&amp;quot;&amp;gt;     &amp;lt;el-scrollbar class=&amp;quot;m-scroll&amp;quot; style=&amp;quot;height:10">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-23T15:43:06.341Z">
+<meta property="og:image" content="http://lazyman123.github.io/2018/08/28/关于Element%20UI中的滚动条/1535509324937.png">
+<meta property="og:image" content="http://lazyman123.github.io/2018/08/28/关于Element%20UI中的滚动条/1535509590868.png">
+<meta property="og:image" content="http://lazyman123.github.io/2018/08/28/关于Element%20UI中的滚动条/1535509647353.png">
+<meta property="og:image" content="http://lazyman123.github.io/2018/08/28/关于Element%20UI中的滚动条/1535509789722.png">
+<meta property="og:updated_time" content="2018-08-29T02:39:43.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Virtual DOM">
-<meta name="twitter:description" content="Virtual DOM真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。 而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 VNode 这么一个 Class 去描述，它是定义在 src/co">
+<meta name="twitter:title" content="Element UI中的滚动条">
+<meta name="twitter:description" content="Element UI 中滚动条在使用vue + element开发项目时，需要对滚动条进行美化，找了一下element文档没找到相关滚动组件，但是文档中肯定是有用到的，如下图 &amp;lt;div style=&amp;quot;height:100%;&amp;quot;&amp;gt;     &amp;lt;el-scrollbar class=&amp;quot;m-scroll&amp;quot; style=&amp;quot;height:10">
+<meta name="twitter:image" content="http://lazyman123.github.io/2018/08/28/关于Element%20UI中的滚动条/1535509324937.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://lazyman123.github.io/2018/07/23/Virtual DOM/"/>
+  <link rel="canonical" href="http://lazyman123.github.io/2018/08/28/关于Element UI中的滚动条/"/>
 
 
 
@@ -142,7 +147,7 @@
   };
 </script>
 
-  <title>Virtual DOM | saner·Blog</title>
+  <title>Element UI中的滚动条 | saner·Blog</title>
   
 
 
@@ -316,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/07/23/Virtual DOM/">
+    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/08/28/关于Element UI中的滚动条/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="saner">
@@ -333,7 +338,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Virtual DOM
+          <h1 class="post-title" itemprop="name headline">Element UI中的滚动条
               
             
           </h1>
@@ -358,12 +363,24 @@
                 
               
 
-              <time title="创建时间：2018-07-23 11:42:01 / 修改时间：23:43:06" itemprop="dateCreated datePublished" datetime="2018-07-23T11:42:01+08:00">2018-07-23</time>
+              <time title="创建时间：2018-08-28 16:00:32" itemprop="dateCreated datePublished" datetime="2018-08-28T16:00:32+08:00">2018-08-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-29 10:39:43" itemprop="dateModified" datetime="2018-08-29T10:39:43+08:00">2018-08-29</time>
               
             
           </span>
@@ -380,7 +397,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深入浅出Vue/" itemprop="url" rel="index"><span itemprop="name">深入浅出Vue</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Element-UI/" itemprop="url" rel="index"><span itemprop="name">Element UI</span></a></span>
 
                 
                 
@@ -420,12 +437,13 @@
       
 
       
-        <h1 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h1><p>真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。</p>
-<p>而 Virtual DOM 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多。在 Vue.js 中，Virtual DOM 是用 <strong>VNode</strong> 这么一个 Class 去描述，它是定义在 src/core/vdom/vnode.js 中的。<br><a id="more"></a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">VNode</span> </span>&#123;</div><div class="line">  tag: string | <span class="keyword">void</span>;</div><div class="line">  data: VNodeData | <span class="keyword">void</span>;</div><div class="line">  children: ?<span class="built_in">Array</span>&lt;VNode&gt;;</div><div class="line">  text: string | <span class="keyword">void</span>;</div><div class="line">  elm: Node | <span class="keyword">void</span>;</div><div class="line">  ns: string | <span class="keyword">void</span>;</div><div class="line">  context: Component | <span class="keyword">void</span>; <span class="comment">// rendered in this component's scope</span></div><div class="line">  key: string | number | <span class="keyword">void</span>;</div><div class="line">  componentOptions: VNodeComponentOptions | <span class="keyword">void</span>;</div><div class="line">  componentInstance: Component | <span class="keyword">void</span>; <span class="comment">// component instance</span></div><div class="line">  parent: VNode | <span class="keyword">void</span>; <span class="comment">// component placeholder node</span></div><div class="line"></div><div class="line">  <span class="comment">// strictly internal</span></div><div class="line">  raw: boolean; <span class="comment">// contains raw HTML? (server only)</span></div><div class="line">  isStatic: boolean; <span class="comment">// hoisted static node</span></div><div class="line">  isRootInsert: boolean; <span class="comment">// necessary for enter transition check</span></div><div class="line">  isComment: boolean; <span class="comment">// empty comment placeholder?</span></div><div class="line">  isCloned: boolean; <span class="comment">// is a cloned node?</span></div><div class="line">  isOnce: boolean; <span class="comment">// is a v-once node?</span></div><div class="line">  asyncFactory: <span class="built_in">Function</span> | <span class="keyword">void</span>; <span class="comment">// async component factory function</span></div><div class="line">  asyncMeta: <span class="built_in">Object</span> | <span class="keyword">void</span>;</div><div class="line">  isAsyncPlaceholder: boolean;</div><div class="line">  ssrContext: <span class="built_in">Object</span> | <span class="keyword">void</span>;</div><div class="line">  fnContext: Component | <span class="keyword">void</span>; <span class="comment">// real context vm for functional nodes</span></div><div class="line">  fnOptions: ?ComponentOptions; <span class="comment">// for SSR caching</span></div><div class="line">  fnScopeId: ?string; <span class="comment">// functional scope id support</span></div></pre></td></tr></table></figure>
-<p>可以看到 Vue.js 中的 Virtual DOM 的定义还是略微复杂一些的，因为它这里包含了很多 Vue.js 的特性。这里千万不要被这些茫茫多的属性吓到，实际上 Vue.js 中 Virtual DOM 是借鉴了一个开源库 snabbdom 的实现，然后加入了一些 Vue.js 特色的东西。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实 VNode 是对真实 DOM 的一种抽象描述，它的核心定义无非就几个关键属性，标签名、数据、子节点、键值等，其它属性都是都是用来扩展 VNode 的灵活性以及实现一些特殊 feature 的。由于 VNode 只是用来映射到真实 DOM 的渲染，不需要包含操作 DOM 的方法，因此它是非常轻量和简单的。</p>
-<p>Virtual DOM 除了它的数据结构的定义，映射到真实的 DOM 实际上要经历 VNode 的 create、diff、patch 等过程。那么在 Vue.js 中，VNode 的 create 是通过之前提到的 createElement 方法创建的，我们接下来分析这部分的实现。</p>
+        <h2 id="Element-UI-中滚动条"><a href="#Element-UI-中滚动条" class="headerlink" title="Element UI 中滚动条"></a>Element UI 中滚动条</h2><p>在使用<code>vue + element</code>开发项目时，需要对滚动条进行美化，找了一下<code>element</code>文档没找到相关滚动组件，但是文档中肯定是有用到的，如下图<br><img src="./1535509324937.png" alt="Alt text"></p>
+<pre><code>&lt;div style=&quot;height:100%;&quot;&gt;
+    &lt;el-scrollbar class=&quot;m-scroll&quot; style=&quot;height:100%;&quot;&gt;
+        &lt;router-view/&gt;
+    &lt;/el-scrollbar&gt;
+&lt;/div&gt;
+</code></pre><p>初见成效<br><img src="./1535509590868.png" alt="Alt text"><br>但是底部的横向滚动条却还在，仔细看了下，问题在这里<br><img src="./1535509647353.png" alt="Alt text"><br><code>margin-bottom</code> 设为负值，但是我的项目里没能起效(有可能是项目样式有冲突，未去深究)，暴力改写样式加上<code>overflow-x:hidden</code><br><img src="./1535509789722.png" alt="Alt text"><br>可以，很强了！</p>
 
       
     </div>
@@ -446,7 +464,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue/" rel="tag"># Vue</a>
+            <a href="/tags/Element-UI/" rel="tag"># Element UI</a>
           
         </div>
       
@@ -459,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/22/Vue之render方法/" rel="next" title="Vue之render方法">
-                <i class="fa fa-chevron-left"></i> Vue之render方法
+              <a href="/2018/08/21/Vue的基本操作之$set()/" rel="next" title="Vue基操之$set()方法">
+                <i class="fa fa-chevron-left"></i> Vue基操之$set()方法
               </a>
             
           </div>
@@ -468,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/25/Vue之createElement/" rel="prev" title="Vue之createElement">
-                Vue之createElement <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -646,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">1.</span> <span class="nav-text">Virtual DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Element-UI-中滚动条"><span class="nav-number">1.</span> <span class="nav-text">Element UI 中滚动条</span></a></li></ol></div>
             
 
           </div>
