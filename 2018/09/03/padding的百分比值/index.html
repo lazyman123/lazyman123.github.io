@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="saner·Blog">
 <meta property="og:description" content="padding的百分比值关于padding的属性值，有两点可以说说。其一，和margin属性不同，padding属性是不支持负值的；其二，padding支持百分比值，但是，和height等属性的百分比设计计算规则有些差异，差异在于：padding百分比值无论是水平方向还是垂直方向均是相对于宽度计算的！ 为何这么设计呢？其实相对高度计算也没什么问题，但是如果padding相对于height计算，大多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-03T15:46:39.842Z">
+<meta property="og:updated_time" content="2018-09-03T15:51:07.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="padding的百分比值">
 <meta name="twitter:description" content="padding的百分比值关于padding的属性值，有两点可以说说。其一，和margin属性不同，padding属性是不支持负值的；其二，padding支持百分比值，但是，和height等属性的百分比设计计算规则有些差异，差异在于：padding百分比值无论是水平方向还是垂直方向均是相对于宽度计算的！ 为何这么设计呢？其实相对高度计算也没什么问题，但是如果padding相对于height计算，大多">
@@ -358,7 +358,7 @@
                 
               
 
-              <time title="创建时间：2018-09-03 11:00:32 / 修改时间：23:46:39" itemprop="dateCreated datePublished" datetime="2018-09-03T11:00:32+08:00">2018-09-03</time>
+              <time title="创建时间：2018-09-03 11:00:32 / 修改时间：23:51:07" itemprop="dateCreated datePublished" datetime="2018-09-03T11:00:32+08:00">2018-09-03</time>
             
 
             
@@ -380,7 +380,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS世界/" itemprop="url" rel="index"><span itemprop="name">CSS世界</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/玩转CSS/" itemprop="url" rel="index"><span itemprop="name">玩转CSS</span></a></span>
 
                 
                 
@@ -421,9 +421,9 @@
 
       
         <h2 id="padding的百分比值"><a href="#padding的百分比值" class="headerlink" title="padding的百分比值"></a>padding的百分比值</h2><p>关于padding的属性值，有两点可以说说。其一，和margin属性不同，padding属性是不支持负值的；其二，padding支持百分比值，但是，和height等属性的百分比设计计算规则有些差异，差异在于：padding百分比值无论是水平方向还是垂直方向均是相对于宽度计算的！</p>
-<p>为何这么设计呢？其实相对高度计算也没什么问题，但是如果padding相对于height计算，大多数情况下计算值都是0，跟摆设没什么区别，还不如相对宽度计算，因为CSS默认的是水平流，计算值一直会有效，而且我们还可以利用这一特性实现一些有意思的布局效果。也就是面向场景和需求设计，这种设计可以让我们轻松实现自适应的等比矩形效果。例如，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div &#123; padding: 50%; &#125;</div></pre></td></tr></table></figure></p>
-<p>就可以实现一个正方形，如果这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div &#123; padding: 25% 50%; &#125;</div></pre></td></tr></table></figure></p>
-<p>就得到了一个宽高比为2:1的矩形效果。<br>网页开发的时候经常会有横贯整个屏幕的头图效果，我们通常的做法是定高，如200像素高，屏幕小的时候图片两侧内容隐藏。然而这种实现有一个问题，就是类似笔记本这样的小屏幕，头图高度过高会导致下面主体内容可能一屏都实现不了，但是，如果我们使用padding进行等比例控制，则小屏幕下头图高度天然等比例缩小，没有任何JavaScript，却依然适配良好！例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">	padding: 10% 50%;</div><div class="line">	position: relative;</div><div class="line">&#125;</div><div class="line">.box &gt; img &#123;</div><div class="line">	position: absolute;</div><div class="line">	width: 100%;</div><div class="line">	height: 100%;</div><div class="line">	left: 0;</div><div class="line">	top: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为何这么设计呢？其实相对高度计算也没什么问题，但是如果padding相对于height计算，大多数情况下计算值都是0，跟摆设没什么区别，还不如相对宽度计算，因为CSS默认的是水平流，计算值一直会有效，而且我们还可以利用这一特性实现一些有意思的布局效果。也就是面向场景和需求设计，这种设计可以让我们轻松实现自适应的等比矩形效果。例如，使用<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">padding</span>: <span class="number">50%</span>; &#125;</div></pre></td></tr></table></figure></p>
+<p>就可以实现一个正方形，如果这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">padding</span>: <span class="number">25%</span> <span class="number">50%</span>; &#125;</div></pre></td></tr></table></figure></p>
+<p>就得到了一个宽高比为2:1的矩形效果。<br>网页开发的时候经常会有横贯整个屏幕的头图效果，我们通常的做法是定高，如200像素高，屏幕小的时候图片两侧内容隐藏。然而这种实现有一个问题，就是类似笔记本这样的小屏幕，头图高度过高会导致下面主体内容可能一屏都实现不了，但是，如果我们使用padding进行等比例控制，则小屏幕下头图高度天然等比例缩小，没有任何JavaScript，却依然适配良好！例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">10%</span> <span class="number">50%</span>;</div><div class="line">	<span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">img</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>就实现了一个宽高比为5:1的比例固定的头图效果，上述方法包括IE6在内的浏览器都兼容。有兴趣可以自己感受一下，手动输入 <a href="http://demo.cssworld.cn/4/2-3.php。改变浏览器宽度即可感受到等比例的变化。" target="_blank" rel="external">http://demo.cssworld.cn/4/2-3.php。改变浏览器宽度即可感受到等比例的变化。</a></p>
 <p>上面百分比值是应用在具有块状特性的元素上的，如果是内联元素，会有怎样的实现呢？</p>
 <ul>
@@ -431,12 +431,12 @@
 <li>默认的高度和宽度细节有差异</li>
 <li>padding会断行</li>
 </ul>
-<p>我们先来看一下内联元素的padding断行，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">	border: 2px dashed #cd0000;</div><div class="line">&#125;</div><div class="line">span &#123;</div><div class="line">	padding: 50%;</div><div class="line">	background-color: gray;</div><div class="line">&#125;</div><div class="line">&lt;span&gt;内有文字若干&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>我们先来看一下内联元素的padding断行，代码如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">border</span>: <span class="number">2px</span> dashed <span class="number">#cd0000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">span</span> &#123;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">background-color</span>: gray;</div><div class="line">&#125;</div><div class="line">&lt;span&gt;内有文字若干&lt;/span&gt;</div></pre></td></tr></table></figure></p>
 <p>效果如图所示，表现诡异之处有：”内有”两字不见了，”文字”两字具有显示了，背景区域非矩形，背景色宽度和外部容器宽度不一致等。<br>CSS的很多现象很难解释，原因在于其表现往往是多个属性多个规则一起生效的结果。并非单一属性作用的结果。例如这里的例子，虽然几乎没有什么实用价值，但是对于我们深入理解内联元素的世界很有帮助。</p>
 <p>对于内联元素，其padding是会断行的，也就是padding区域是跟着内联盒模型中的行框盒子走的，上面的例子由于文字比较多，一行显示不了，于是”若干”两字换到了下一行，于是，原本的padding区域也跟着一起掉下来了，根据后来居上的层叠规则，”内有”两字自然就正好被覆盖，于是看不见了；同时，规则的矩形区域因为换行，变成了五条边；至于宽度和外部容器盒子不一样宽，那是自然的，如果没有任何文字内容，那自然宽度正好和容器一致；现在有这些字，实际宽度是容器宽度和字的总和，换行后的宽度想要和容器宽度一样，那可真要靠人品。</p>
 <p>这么一分析，上面上面平时很少见到的“诡异”现象就好解释了。</p>
-<p>事情还没完，我们再看一个现象，假如是空的内联元素，里面没有任何文字，仅有一个span标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span&gt;内有文字若干&lt;/span&gt;</div></pre></td></tr></table></figure></p>
-<p>此时，我们会发现居然最终背景区域的宽度和高度是不相等<br>的，这不科学啊！padding:50%相对宽度计算，应<br>该出来是个正方形啊，为何高度要高出一截呢？<br>原因其实很简单：内联元素的垂直 padding 会让“幽灵空白<br>节点”显现，也就是规范中的“strut”出现。<br>知道了原因，要解决此问题就简单了。由于内联元素默认的<br>高度完全受 font-size 大小控制，因此，我们只要：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">span &#123; </div><div class="line"> padding: 50%; </div><div class="line"> font-size: 0; </div><div class="line"> background-color: gray; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>事情还没完，我们再看一个现象，假如是空的内联元素，里面没有任何文字，仅有一个span标签：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>内有文字若干<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>此时，我们会发现居然最终背景区域的宽度和高度是不相等<br>的，这不科学啊！padding:50%相对宽度计算，应<br>该出来是个正方形啊，为何高度要高出一截呢？<br>原因其实很简单：内联元素的垂直 padding 会让“幽灵空白<br>节点”显现，也就是规范中的“strut”出现。<br>知道了原因，要解决此问题就简单了。由于内联元素默认的<br>高度完全受 font-size 大小控制，因此，我们只要：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">span</span> &#123; </div><div class="line"> <span class="attribute">padding</span>: <span class="number">50%</span>; </div><div class="line"> <span class="attribute">font-size</span>: <span class="number">0</span>; </div><div class="line"> <span class="attribute">background-color</span>: gray; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>此时，“幽灵空白节点”高度变成了 0，高和宽就会一样，和块状元素一样的正方形就出现了。可以看到，内联盒模型的理论知识对我们理解内联元素的各种表现是非常有价值的。这种理解纯靠实践，想破脑袋都不会想明白为什么会这样。所以，进行深度学习是很有必要的。</p>
 
       
@@ -584,9 +584,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
