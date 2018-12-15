@@ -114,25 +114,25 @@
 
 
 
-  <meta name="description" content="Vue实例挂载的实现Vue中我们通过\$mount实例方法去挂载vm的，\$mount方法在多个文件中都有定义，如src/platform/web/entry-runtime-with-compiler.js、src/platform/web/runtime/index.js、src/platform/weex/runtime/index.js因为\$mount这个方法的实现是和平台、构建方式都相">
-<meta name="keywords" content="Vue">
+  <meta name="description" content="JS中的类型判断（一）前言类型判断是框架设计的基础之一，它很重要，并且掌握类型判断对JavaScript的深入是必不可少的，这也是我为什么记录下这里我所理解的 JS 类型判断。 数据类型ES5中有5中简单数据类型（也称为基本数据类型）：undefined、Null、Boolean、Number、String，还有一种复杂数据类型 Object，Object 本质上是由一组无序的名值对组成，ECMA">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue实例挂载的实现">
-<meta property="og:url" content="http://lazyman123.github.io/2018/07/17/Vue实例挂载的实现/index.html">
+<meta property="og:title" content="JS中的类型判断（一）">
+<meta property="og:url" content="http://lazyman123.github.io/2018/12/15/JS中的类型判断（一）/index.html">
 <meta property="og:site_name" content="saner·Blog">
-<meta property="og:description" content="Vue实例挂载的实现Vue中我们通过\$mount实例方法去挂载vm的，\$mount方法在多个文件中都有定义，如src/platform/web/entry-runtime-with-compiler.js、src/platform/web/runtime/index.js、src/platform/weex/runtime/index.js因为\$mount这个方法的实现是和平台、构建方式都相">
+<meta property="og:description" content="JS中的类型判断（一）前言类型判断是框架设计的基础之一，它很重要，并且掌握类型判断对JavaScript的深入是必不可少的，这也是我为什么记录下这里我所理解的 JS 类型判断。 数据类型ES5中有5中简单数据类型（也称为基本数据类型）：undefined、Null、Boolean、Number、String，还有一种复杂数据类型 Object，Object 本质上是由一组无序的名值对组成，ECMA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-17T15:42:45.747Z">
+<meta property="og:updated_time" content="2018-12-15T12:21:26.255Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue实例挂载的实现">
-<meta name="twitter:description" content="Vue实例挂载的实现Vue中我们通过\$mount实例方法去挂载vm的，\$mount方法在多个文件中都有定义，如src/platform/web/entry-runtime-with-compiler.js、src/platform/web/runtime/index.js、src/platform/weex/runtime/index.js因为\$mount这个方法的实现是和平台、构建方式都相">
+<meta name="twitter:title" content="JS中的类型判断（一）">
+<meta name="twitter:description" content="JS中的类型判断（一）前言类型判断是框架设计的基础之一，它很重要，并且掌握类型判断对JavaScript的深入是必不可少的，这也是我为什么记录下这里我所理解的 JS 类型判断。 数据类型ES5中有5中简单数据类型（也称为基本数据类型）：undefined、Null、Boolean、Number、String，还有一种复杂数据类型 Object，Object 本质上是由一组无序的名值对组成，ECMA">
 
 
 
 
 
 
-  <link rel="canonical" href="http://lazyman123.github.io/2018/07/17/Vue实例挂载的实现/"/>
+  <link rel="canonical" href="http://lazyman123.github.io/2018/12/15/JS中的类型判断（一）/"/>
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>Vue实例挂载的实现 | saner·Blog</title>
+  <title>JS中的类型判断（一） | saner·Blog</title>
   
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/07/17/Vue实例挂载的实现/">
+    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/12/15/JS中的类型判断（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="saner">
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue实例挂载的实现
+          <h1 class="post-title" itemprop="name headline">JS中的类型判断（一）
               
             
           </h1>
@@ -358,7 +358,7 @@
                 
               
 
-              <time title="创建时间：2018-07-17 10:10:11 / 修改时间：23:42:45" itemprop="dateCreated datePublished" datetime="2018-07-17T10:10:11+08:00">2018-07-17</time>
+              <time title="创建时间：2018-12-15 20:20:12 / 修改时间：20:21:26" itemprop="dateCreated datePublished" datetime="2018-12-15T20:20:12+08:00">2018-12-15</time>
             
 
             
@@ -380,7 +380,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深入浅出Vue/" itemprop="url" rel="index"><span itemprop="name">深入浅出Vue</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Javascript探索之路/" itemprop="url" rel="index"><span itemprop="name">Javascript探索之路</span></a></span>
 
                 
                 
@@ -420,19 +420,76 @@
       
 
       
-        <h1 id="Vue实例挂载的实现"><a href="#Vue实例挂载的实现" class="headerlink" title="Vue实例挂载的实现"></a>Vue实例挂载的实现</h1><p>Vue中我们通过<strong>\$mount</strong>实例方法去挂载vm的，<strong>\$mount</strong>方法在多个文件中都有定义，如<span style="color: darkred;background:#EEE;">src/platform/web/entry-runtime-with-compiler.js</span>、<span style="color: darkred;background:#EEE;">src/platform/web/runtime/index.js</span>、<span style="color: darkred;background:#EEE;">src/platform/weex/runtime/index.js</span>因为<strong>\$mount</strong>这个方法的实现是和平台、构建方式都相关的。接下来我们重点分析compiler版本的<strong>\$mount</strong>实现，因为抛开webpack的vue-loader,我们在纯前端浏览器环境分析Vue的工作原理，有助于我们对原理理解的深入。</p>
-<a id="more"></a>
-<p>compiler版本的<strong>\$mount</strong>实现很有意思，先来看一下src/platform/web/entry-runtime-with-compiler.js文件中定义：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mount = Vue.prototype.$mount</div><div class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">	el?: string | Element,</span></span></div><div class="line"><span class="function"><span class="params">	hydrating?: boolean</span></span></div><div class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</div><div class="line">	el = el &amp;&amp; query(el)</div><div class="line">	</div><div class="line">	<span class="comment">/* istanbul ignore if */</span></div><div class="line">	<span class="keyword">if</span> (el === <span class="built_in">document</span>.body || el === <span class="built_in">document</span>.documentElement) &#123;</div><div class="line">		process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; warn (</div><div class="line">			<span class="string">`Do not mount Vue to &lt;html&gt; or &lt;body&gt; - mount to normal elements instead.`</span></div><div class="line">		)</div><div class="line">		rerurn <span class="keyword">this</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">const</span> options = <span class="keyword">this</span>.$options</div><div class="line">	<span class="comment">// resolve template/el and convert to render function</span></div><div class="line">	<span class="keyword">if</span> (!options.render) &#123;</div><div class="line">		<span class="keyword">let</span> template = options.template</div><div class="line">		<span class="keyword">if</span> (template) &#123;</div><div class="line">			<span class="keyword">if</span> (<span class="keyword">typeof</span> template === <span class="string">'string'</span>) &#123;</div><div class="line">				<span class="keyword">if</span> (template.charAt(<span class="number">0</span>) === <span class="string">'#'</span>) &#123;</div><div class="line">					template = idToTemplate(template)</div><div class="line">					<span class="comment">/* istanbul ignore if */</span></div><div class="line">					<span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; !template) &#123;</div><div class="line">						warn(<span class="string">`Template element not found or is empty: <span class="subst">$&#123;options.template&#125;</span>`</span>)</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这段代码首先缓存了原型上的<strong>\$mount</strong>方法，再重新定义该方法。首先，它对el做了限制，Vue不能挂载在body、html这样的根节点上。接下来的是很关键的逻辑–如果没有定义render方法，则会把el或者template字符串转换成render方法。这里我们要牢记，在Vue2.0版本中，所有Vue的组件的渲染最终都需要render方法，无论我们是用单文件.vue方式开发组件，还是写了el或者template属性，最终都会转换成render方法，那么这个过程是 Vue 的一个“在线编译”的过程，它是调用 compileToFunctions 方法实现的，编译过程我们之后会介绍。最后，调用原先原型上的 <strong>\$mount</strong> 方法挂载。</p>
-<p>原先原型上的<strong>\$mount</strong>方法在src/platform/web/runtime/index.js 中定义，之所以这么设计完全是为了复用，因为它是可以被 runtime only 版本的 Vue 直接使用的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// public mount method</span></div><div class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">	el?: string | Element,</span></span></div><div class="line"><span class="function"><span class="params">	hydrating?: boolean</span></span></div><div class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</div><div class="line">	el = el &amp;&amp; inBrowser ? query(el) : <span class="literal">undefined</span></div><div class="line">	<span class="keyword">return</span> mountComponent(<span class="keyword">this</span>, el, hydrating)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>\$mount</strong> 方法实际上会去调用<strong>mountComponent</strong>方法，这个方法定义在src/core/instance/lifecycle.js文件中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mountComponent</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">	vm: Component,</span></span></div><div class="line"><span class="function"><span class="params">	el: ?Element,</span></span></div><div class="line"><span class="function"><span class="params">	hydrating?: boolean</span></span></div><div class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</div><div class="line">	vm.$el = el</div><div class="line">	<span class="keyword">if</span> (!vm.$options.render) &#123;</div><div class="line">		vm.$options.render = createEmptyVNode</div><div class="line">		<span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</div><div class="line">			<span class="comment">/* istanbul ignore if */</span></div><div class="line">			<span class="keyword">if</span> ((vm.$options.template &amp;&amp; vm.$options.template.charAt(<span class="number">0</span>) !== <span class="string">'#'</span>) || vm.$options.el || el)&#123;</div><div class="line">				warn(</div><div class="line">          <span class="string">'You are using the runtime-only build of Vue where the template '</span> +</div><div class="line">          <span class="string">'compiler is not available. Either pre-compile the templates into '</span> +</div><div class="line">          <span class="string">'render functions, or use the compiler-included build.'</span>,</div><div class="line">          vm</div><div class="line">        )</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				warn(<span class="string">'Failed to mount component: template or render function not defined.'</span>,</div><div class="line">          vm)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	callHook(vm, <span class="string">'beforeMount'</span>)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>从上面的代码可以看到，<strong>mountComponent</strong>核心就是先调用<strong>vm._render</strong>方法先生成虚拟Node，再实例化一个渲染<strong>Watcher</strong>，在它的回调函数中会调用<strong>updateComponent</strong>方法，最终调用<strong>vm._update</strong>更新DOM。</p>
-<p><strong>Watcher</strong>在这里起到两个作用，一个是初始化的时候会执行回调函数，另一个是当vm实例中的监测的数据发生变化的时候执行回调函数。</p>
-<p>函数最后判断为根节点的时候设置 <strong>vm._isMounted</strong> 为 <strong>true</strong>， 表示这个实例已经挂载了，同时执行 <strong>mounted</strong> 钩子函数。 这里注意 <strong>vm.$vnode</strong> 表示 Vue 实例的父虚拟 Node，所以它为 <strong>Null</strong> 则表示当前是根 Vue 的实例。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>mountComponent</strong> 方法的逻辑也是非常清晰的，它会完成整个渲染工作，接下来就是分析其中的细节，也就是最核心的2个方法：<strong>vm._render</strong> 和 <strong>vm._update</strong>。</p>
+        <h1 id="JS中的类型判断（一）"><a href="#JS中的类型判断（一）" class="headerlink" title="JS中的类型判断（一）"></a>JS中的类型判断（一）</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型判断是框架设计的基础之一，它很重要，并且掌握类型判断对JavaScript的深入是必不可少的，这也是我为什么记录下这里我所理解的 JS 类型判断。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>ES5中有5中简单数据类型（也称为基本数据类型）：undefined、Null、Boolean、Number、String，还有一种复杂数据类型 Object，Object 本质上是由一组无序的名值对组成，ECMAScript不支持任何创建自定义类型的机制，在ES6中又新增了一种基本数据类型 <strong>Symbol</strong> 它的意思即表示独一无二的值，至于它的作用以及它能够来解决什么问题不是现在的重点。</p>
+<h4 id="1-typeOf"><a href="#1-typeOf" class="headerlink" title="1. typeOf"></a>1. typeOf</h4><p>由于ECMAScript语言是松散类型的，因此需要有一种手段来检测给定变量的数据类型——typeOf就是负责提供这方面信息的操作符。</p>
+<ul>
+<li>“undefined”—— 如果这个值未定义</li>
+<li>“boolean”—— 如果这个值是布尔值</li>
+<li>“string”—— 如果这个值是字符串</li>
+<li>“number”—— 如果这个值是数字</li>
+<li>“object” —— 如果这个值是对象或者是null</li>
+<li>“function” —— 如果这个值是函数</li>
+</ul>
+<p>下面是几个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'some message'</span>;</div><div class="line">typeOf message <span class="comment">// string</span></div><div class="line">typeOf <span class="number">10</span> <span class="comment">// number</span></div></pre></td></tr></table></figure>
+<p>大部分的类型判定都显而易见，这里只需要注意一下 <strong>null</strong>，因为在typeOf null 它返回的是 <strong>object</strong>，前面说null是一种基本数据类型那为什么会出现这样的结果。首先 <strong>null</strong> 是一个特殊值这是规定也确实在计算机语言当中被用来表示一个空的对象引用。</p>
+<p>除此之外 <strong>function</strong> 在变量经过 typeOf 后返回的结果之一它也稍显特殊，同时在考虑它特殊的情况下，先想一下它为什么会返回出来而不是其他什么。</p>
+<pre><code>从技术角度讲，函数在ECMAScript中是对象，有时候也被称为第一类对象，它不是一种数据类型，然而，函数也确实有些特殊的属性，因此通过typeOf操作符来区分函数和其他对象是有必要的。
+</code></pre><blockquote>
+<p>Undefined 类型</p>
+</blockquote>
+<p>Undefined 类型只有一个值，即特殊的undefined。在使用var声明变量但未对其加以初始化时，这个变量的值就是undefined。</p>
+<p>这里只要注意这点，在ECMAScript中变量尚未声明和声明了但未初始化的变量它们的值默认都是undefined，从技术的角度上，它们有着本质的区别，相同点即是两者都不能执行真正的操作。</p>
+<blockquote>
+<p>Null 类型</p>
+</blockquote>
+<p>Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null。从逻辑的角度上讲，null 值表示一个空对象指针，这也是typeOf后返回object的原因。</p>
+<p>这里有一个比较 null == undefined 的操作返回值是true。这是规则，比较操作符会出于比较的目的会转换操作数。</p>
+<p>那么 null 和 undefined 是怎样区分的呢或者说傻子都知道这两者的作用不同那怎么说呢？</p>
+<p>有一句话是只要意在保存对象的变量还没有真正的保存对象，就应该明确让对象保存 null 值，这样做不仅可以体现 null 作为空对象的惯例，也进一步区分了  null 和 undefined。</p>
+<blockquote>
+<p>Boolean 类型</p>
+</blockquote>
+<p>这个类型没什么说的，不过这应该是用的比较多的一种类型，这里要了解的是这种类型有两个值 true 和 false。</p>
+<blockquote>
+<p>Number 类型</p>
+</blockquote>
+<p>Number 类型需要注意几点：</p>
+<ol>
+<li>浮点数值</li>
+<li>数值范围</li>
+<li>NaN</li>
+<li>数值转换</li>
+</ol>
+<h5 id="1-浮点数值"><a href="#1-浮点数值" class="headerlink" title="1. 浮点数值"></a>1. 浮点数值</h5><p>所谓浮点数值，就是该数值中必须包含一个小数点，并且小数点后至少有一位数字。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> floatNum = <span class="number">1.1</span>；</div><div class="line"><span class="keyword">let</span> floatNum = <span class="number">.1</span>   <span class="comment">// 有效，但不推荐</span></div></pre></td></tr></table></figure>
+<p>这里浮点计算在这门语言中会遇到一个小问题。<br>如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line">结果为<span class="number">0.30000000000000004</span></div></pre></td></tr></table></figure></p>
+<p>why？这不是我现在想了解的事情，其实大脑的处理事情的方式也是异步的，先把一件不太重要的事情存起来等下做，虽然有些事情可能真的不做了，这也是它被代替了而已。</p>
+<h5 id="2-数值范围"><a href="#2-数值范围" class="headerlink" title="2. 数值范围"></a>2. 数值范围</h5><p>由于内存的限制，ECMAScript表示的最小数值保存在Number.MIN_VALUE中，大多数浏览器这个值是5e-324，最大值Number.MAX_VALUE = 1.79…e+308,超过这个范围返回Infinity值。那么这里我为什么想知道这个👻鬼东西，有什么用？平时根本就遇不到这种情况，每天写写业务代码，怎么可能遇到这种问题，墨菲定律中只要有可能那这种可能就是百分之百。</p>
+<h5 id="3-NaN"><a href="#3-NaN" class="headerlink" title="3. NaN"></a>3. NaN</h5><p>NaN，即非数值（Not a Number）是一个特殊的值，这个数值用于表示一个本来要返回数值的操作数未返回数值的情况（这样做就不会抛出错误）即不会影响代码的执行。<br>首先 NaN 有两个特点，一、任何涉及 NaN 的操作都返回NaN。二、NaN 与任何值都不相等。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>);      <span class="comment">// true</span></div><div class="line"><span class="built_in">isNaN</span>(<span class="number">10</span>);       <span class="comment">// false</span></div><div class="line"><span class="built_in">isNaN</span>(<span class="string">'a'</span>)       <span class="comment">// true</span></div><div class="line"><span class="built_in">isNaN</span>(<span class="literal">true</span>)      <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>String 类型</p>
+</blockquote>
+<p>这个类型可以说日常生活当中最常用的一种类型之一，我们经常需要操作字符串。其他我先不写，感觉要写能写很多。</p>
+<blockquote>
+<p>Object 类型</p>
+</blockquote>
+<p>ECMAScript中的对象其实就是一组数据和功能的集合。对象可以通过执行new操作符后跟要创建的对象类型的名称来创建。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>    <span class="comment">// 有效，但不推荐不使用圆括号</span></div></pre></td></tr></table></figure>
+<p>这里我们重点需要理解一个思想，Object类型是所有它的实例的基础，换句话说Object类型所具有的任何属性和方法同样存在于更具体的对象中。</p>
+<p>Object的每个实例都具有下列属性和方法。</p>
+<ul>
+<li><strong>constructor</strong>：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor）就是 Object()</li>
+<li><strong>hasOwnProperty(propertyName)</strong>:用于检查给定的属性在当前对象实例中，不能检测到原型链上的属性。</li>
+<li><strong>isPrototypeOf(object)</strong>: 用于检测传入的对象是否是当前对象的原型。</li>
+<li><strong>toLocalString()</strong>: 返回对象的字符串表示，与执行环境的地区所对应。</li>
+<li><strong>toString()</strong>:返回对象的字符串表示。</li>
+<li><p><strong>valueOf()</strong>:返回对象的字符串、数值、布尔值表示，通常与上一个返回值相同。</p>
+<pre><code>有一点就是浏览器的对象和JavaScript环境中的对象不在统一环境中，如BOM，DOM对象它们不一定继承Object。
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -453,7 +510,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue/" rel="tag"># Vue</a>
+            <a href="/tags/JS/" rel="tag"># JS</a>
           
         </div>
       
@@ -466,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/16/JavaScript之闭包/" rel="next" title="JavaScript之闭包">
-                <i class="fa fa-chevron-left"></i> JavaScript之闭包
+              <a href="/2018/11/25/数组的完全随机排序/" rel="next" title="数组的完全随机排序">
+                <i class="fa fa-chevron-left"></i> 数组的完全随机排序
               </a>
             
           </div>
@@ -475,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/19/Vue的基本操作之v-model/" rel="prev" title="Vue基操之v-model">
-                Vue基操之v-model <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -659,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue实例挂载的实现"><span class="nav-number">1.</span> <span class="nav-text">Vue实例挂载的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的类型判断（一）"><span class="nav-number">1.</span> <span class="nav-text">JS中的类型判断（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.0.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.0.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-typeOf"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. typeOf</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-浮点数值"><span class="nav-number">1.0.2.1.1.</span> <span class="nav-text">1. 浮点数值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-数值范围"><span class="nav-number">1.0.2.1.2.</span> <span class="nav-text">2. 数值范围</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-NaN"><span class="nav-number">1.0.2.1.3.</span> <span class="nav-text">3. NaN</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
