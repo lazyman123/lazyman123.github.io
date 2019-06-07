@@ -1833,7 +1833,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d46509;
+  background: #e8ff90;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2645,6 +2645,6 @@ pre {
 }
 .zhaiyao-img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 200px;
+  object-fit: contain;
 }
