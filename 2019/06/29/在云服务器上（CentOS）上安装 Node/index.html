@@ -123,7 +123,7 @@
 <meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_sinian.jpg">
 <meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_error.png">
 <meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_nodev.jpg">
-<meta property="og:updated_time" content="2019-06-29T03:06:48.258Z">
+<meta property="og:updated_time" content="2019-06-29T03:09:51.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在云服务器上（CentOS）上安装 Node">
 <meta name="twitter:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_sinian.jpg">
@@ -359,7 +359,7 @@
                 
               
 
-              <time title="创建时间：2019-06-29 10:00:32 / 修改时间：11:06:48" itemprop="dateCreated datePublished" datetime="2019-06-29T10:00:32+08:00">2019-06-29</time>
+              <time title="创建时间：2019-06-29 10:00:32 / 修改时间：11:09:51" itemprop="dateCreated datePublished" datetime="2019-06-29T10:00:32+08:00">2019-06-29</time>
             
 
             
@@ -446,12 +446,12 @@
 <li>检测 node 是否安装成功</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p><img src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_error.png"></p>
+<p><img style="display:inline-block" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_error.png"></p>
 <p>遇到这种问题，原因是不能全局使用 node 命令，需要建立软连接，使其变为全局，类似 windows 系统配置环境变量。</p>
 <p><strong>实现方式如下</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/node-v10.16.0-linux-x64.tar.xz/bin/node /usr/local/bin/</span><br><span class="line"></span><br><span class="line">ln -s /usr/local/node-v10.16.0-linux-x64.tar.xz/bin/npm /usr/local/bin/</span><br></pre></td></tr></table></figure>
 <p>验证一下，success 😆。</p>
-<p><img class="zhaiyao-img" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_nodev.jpg"></p>
+<p><img style="display:inline-block" class="zhaiyao-img" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_nodev.jpg"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不仅仅是安装 node 环境，安装 mysql 或者其他库，若想全局使用都可以使用软连接的方式，另外在登录云服务器上，推荐使用 SecureCRT 登录。</p>
 
       
