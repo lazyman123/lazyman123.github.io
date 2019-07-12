@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"post_wordcount":{"item_text":true,"wordcount":true,"min2read":true}},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="前端面试之道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 基础知识点（一）">
+<meta property="og:url" content="http://lazyman123.github.io/2018/12/02/JS 基础知识点（一）/index.html">
+<meta property="og:site_name" content="saner·Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_webpack4.png">
+<meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_1.png">
+<meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_2.png">
+<meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_3.png">
+<meta property="og:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_4.png">
+<meta property="og:updated_time" content="2019-07-12T04:07:53.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 基础知识点（一）">
+<meta name="twitter:image" content="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_webpack4.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://lazyman123.github.io/2018/12/02/JS 基础知识点（一）/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JS 基础知识点（一） | saner·Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/lazyman123" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">saner·Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">学如逆水行舟，不进则退。</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lazyman123.github.io/2018/12/02/JS 基础知识点（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="saner">
+      <meta itemprop="description" content="相自我改, 命自我造。">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="saner·Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS 基础知识点（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-02 10:00:32" itemprop="dateCreated datePublished" datetime="2018-12-02T10:00:32+08:00">2018-12-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-12 12:07:53" itemprop="dateModified" datetime="2019-07-12T12:07:53+08:00">2019-07-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端面试之道/" itemprop="url" rel="index"><span itemprop="name">前端面试之道</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img class="zhaiyao-img" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_webpack4.png"><br><a id="more"></a></p>
+<h3 id="原始（Primitive）类型"><a href="#原始（Primitive）类型" class="headerlink" title="原始（Primitive）类型"></a>原始（Primitive）类型</h3><hr>
+<blockquote>
+<p>涉及面试题：原始类型有哪几种？null 是对象嘛？</p>
+</blockquote>
+<p>在 JS 中，存在着 6 种原始值，分别是：</p>
+<ul>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>number</li>
+<li>string</li>
+<li>symbol</li>
+</ul>
+<p>首先原始类型存储的都是值，是没有函数可以调用的，比如 undefined.toString()</p>
+<p><img style="display:inline-block" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_1.png"></p>
+<p>此时你肯定会有疑问，这不对呀，明明 <strong>‘1’.toString()</strong> 是可以使用的。其实在这种情况下，’1’ 已经不是原始类型了，而是被强制转换成了 <strong>String</strong> 类型也就是对象类型，所以可以调用 <strong>toString</strong> 函数。</p>
+<p>除了会在必要的情况下强转类型以外，原始类型还有一些坑。</p>
+<p>其中 JS 的 <strong>number</strong> 类型是浮点类型的，在使用中会遇到某些 Bug，比如 <strong>0.1 + 0.2 !== 0.3</strong>，但是这一块的内容会在其他部分记录。string 类型是不可变的，无论你在 <strong>string</strong> 类型上调用何种方法，都不会对值有改变。</p>
+<p>另外对于 <strong>null</strong> 来说，很多人会认为他是个对象类型，其实这是错误的。虽然 <strong>typeof null</strong> 会输出 <strong>object</strong>，但是这只是 JS 存在的一个悠久 Bug。在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，<strong>000</strong> 开头代表是对象，然而 <strong>null</strong> 表示为全零，所以将它错误的判断为 <strong>object</strong> 。虽然现在的内部类型判断代码已经改变了，但是对于这个 Bug 却是一直流传下来。</p>
+<h3 id="对象（Object）类型"><a href="#对象（Object）类型" class="headerlink" title="对象（Object）类型"></a>对象（Object）类型</h3><hr>
+<blockquote>
+<p>涉及面试题：对象类型和原始类型的不同之处？函数参数是对象会发生什么问题？</p>
+</blockquote>
+<p>在 JS 中，除了原始类型那么其他的都是对象类型了。对象类型和原始类型不同的是，原始类型存储的是值，对象类型存储的是地址（指针）。当你创建了一个对象类型的时候，计算机会在内存中帮我们开辟一个空间来存放值，但是我们需要找到这个空间，这个空间会拥有一个地址（指针）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const a = [];</span><br></pre></td></tr></table></figure>
+<p>对于常量 a 来说，假设内存地址（指针）为 #001，那么在地址 #001 的位置存放了值 []，常量 a 存放了地址（指针） #001，再看以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = [];</span><br><span class="line">const b = a;</span><br><span class="line">b.push(1);</span><br></pre></td></tr></table></figure>
+<p>当我们将变量赋值给另外一个变量时，复制的是原本变量的地址（指针），也就是说当前变量 b 存放的地址（指针）也是 #001，当我们进行数据修改的时候，就会修改存放在地址（指针） #001 上的值，也就导致了两个变量的值都发生了改变。</p>
+<p>接下来我们来看函数参数是对象的情况</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">person</span>) </span>&#123;</span><br><span class="line">  person.age = <span class="number">26</span></span><br><span class="line">  person = &#123;</span><br><span class="line">    name: <span class="string">'yyy'</span>,</span><br><span class="line">    age: <span class="number">30</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> person</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = &#123;</span><br><span class="line">  name: <span class="string">'yck'</span>,</span><br><span class="line">  age: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = test(p1)</span><br><span class="line"><span class="built_in">console</span>.log(p1) <span class="comment">// -&gt; ?</span></span><br><span class="line"><span class="built_in">console</span>.log(p2) <span class="comment">// -&gt; ?</span></span><br></pre></td></tr></table></figure>
+<p>对于以上代码，你是否能正确的写出结果呢？</p>
+<ul>
+<li>首先，函数传参是传递对象指针的副本</li>
+<li>到函数内部修改参数的属性这步，我相信大家都知道，当前 p1 的值也被修改了</li>
+<li>但是当我们重新为 person 分配了一个对象时就出现了分歧，请看下图</li>
+</ul>
+<p><img style="display:inline-block" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_2.png"></p>
+<h3 id="typeof-vs-instanceof"><a href="#typeof-vs-instanceof" class="headerlink" title="typeof vs instanceof"></a>typeof vs instanceof</h3><hr>
+<blockquote>
+<p>涉及面试题：typeof 是否能正确判断类型？instanceof 能正确判断对象的原理是什么？</p>
+</blockquote>
+<p><strong>typeof</strong> 对于原始类型来说，除了 <strong>null</strong> 都可以显示正确的类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">1</span> <span class="comment">// 'number'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'1'</span> <span class="comment">// 'string'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// 'undefined'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> <span class="comment">// 'boolean'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>() <span class="comment">// 'symbol'</span></span><br></pre></td></tr></table></figure>
+<p><strong>typeof</strong> 对于对象来说，除了函数都会显示 <strong>object</strong>，所以说 <strong>typeof</strong> 并不能准确判断变量到底是什么类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> [] <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">console</span>.log <span class="comment">// 'function'</span></span><br></pre></td></tr></table></figure>
+<p>如果我们想判断一个对象的正确类型，这时候可以考虑使用 <strong>instanceof</strong>，因为内部机制是通过原型链来判断的，在后面的章节中我们也会自己去实现一个 <strong>instanceof</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line">p1 <span class="keyword">instanceof</span> Person <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'hello world'</span></span><br><span class="line">str <span class="keyword">instanceof</span> <span class="built_in">String</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>)</span><br><span class="line">str1 <span class="keyword">instanceof</span> <span class="built_in">String</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>对于原始类型来说，你想直接通过 <strong>instanceof</strong> 来判断类型是不行的，当然我们还是有办法让 <strong>instanceof</strong> 判断原始类型的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimitiveString</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](x) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> x === <span class="string">'string'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello world'</span> <span class="keyword">instanceof</span> PrimitiveString) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>你可能不知道 <strong>Symbol.hasInstance</strong> 是什么东西，其实就是一个能让我们自定义 <strong>instanceof</strong> 行为的东西，以上代码等同于 <strong>typeof ‘hello world’ === ‘string’</strong>，所以结果自然是 <strong>true</strong> 了。这其实也侧面反映了一个问题， <strong>instanceof</strong> 也不是百分之百可信的。</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><hr>
+<blockquote>
+<p>涉及面试题：该知识点常在笔试题中见到，熟悉了转换规则就不惧怕此类题目了。</p>
+</blockquote>
+<p>首先我们要知道，在 JS 中类型转换只有三种情况，分别是：</p>
+<ul>
+<li>转换为布尔值</li>
+<li>转为数字</li>
+<li>转为字符串</li>
+</ul>
+<p>先来看一个类型转换表格，然后再进入正题</p>
+<blockquote>
+<p>注意图中有一个错误，Boolean 转字符串这行结果我指的是 true 转字符串的例子，不是说 Boolean、函数、Symblo 转字符串都是 <code>true</code></p>
+</blockquote>
+<p><img style="display:inline-block" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_3.png"></p>
+<p><strong>转Boolean</strong></p>
+<p>在条件判断时，除了 <strong>undefined，null， false， NaN， ‘’， 0， -0</strong>，其他所有值都转为 <strong>true</strong>，包括所有对象。</p>
+<p><strong>对象转原始类型</strong></p>
+<p>对象在转换类型的时候，会调用内置的 <strong>[[ToPrimitive]]</strong> 函数，对于该函数来说，算法逻辑一般来说如下：</p>
+<ul>
+<li>如果已经是原始类型了，那就不需要转换了</li>
+<li>如果需要转字符串类型就调用 <strong>x.toString()</strong>，转换为基础类型的话就返回转换的值。不是字符串类型的话就先调用 <strong>valueOf</strong>，结果不是基础类型的话再调用 <strong>toString</strong></li>
+<li>调用 <strong>x.valueOf()</strong>，如果转换为基础类型，就返回转换的值</li>
+<li>如果都没有返回原始类型，就会报错</li>
+</ul>
+<p>当然你也可以重写 <strong>Symbol.toPrimitive</strong>，该方法在转原始类型时调用优先级最高。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  valueOf() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'1'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">1</span> + a <span class="comment">// =&gt; 3</span></span><br></pre></td></tr></table></figure>
+<p><strong>四则运算符</strong></p>
+<p>加法运算符不同于其他几个运算符，它有以下几个特点：</p>
+<ul>
+<li>运算中其中一方为字符串，那么就会把另一方也转换为字符串</li>
+<li>如果一方不是字符串或者数字，那么会将它转换为数字或者字符串</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="string">'1'</span> <span class="comment">// '11'</span></span><br><span class="line"><span class="literal">true</span> + <span class="literal">true</span> <span class="comment">// 2</span></span><br><span class="line"><span class="number">4</span> + [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">// "41,2,3"</span></span><br></pre></td></tr></table></figure>
+<p>如果你对于答案有疑问的话，请看解析：</p>
+<ul>
+<li>对于第一行代码来说，触发特点一，所以将数字 1 转换为字符串，得到结果 ‘11’</li>
+<li>对于第二行代码来说，触发特点二，所以将 true 转为数字 1</li>
+<li>对于第三行代码来说，触发特点二，所以将数组通过 toString 转为字符串 1,2,3，得到结果 41,2,3</li>
+</ul>
+<p>另外对于加法还需要注意这个表达式 <strong>‘a’ + + ‘b’</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a'</span> + + <span class="string">'b'</span> <span class="comment">// -&gt; "aNaN"</span></span><br></pre></td></tr></table></figure>
+<p>因为 + ‘b’ 等于 <strong>NaN</strong>，所以结果为 “aNaN”，你可能也会在一些代码中看到过 + ‘1’ 的形式来快速获取 <strong>number</strong> 类型。</p>
+<p>那么对于除了加法的运算符来说，只要其中一方是数字，那么另一方就会被转为数字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span> * <span class="string">'3'</span> <span class="comment">// 12</span></span><br><span class="line"><span class="number">4</span> * [] <span class="comment">// 0</span></span><br><span class="line"><span class="number">4</span> * [<span class="number">1</span>, <span class="number">2</span>] <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<p><strong>比较运算符</strong></p>
+<ol>
+<li>如果是对象，就通过 <strong>toPrimitive</strong> 转换对象</li>
+<li>如果是字符串，就通过 <strong>unicode</strong> 字符索引来比较</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  valueOf() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'1'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a &gt; <span class="number">-1</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在以上代码中，因为 a 是对象，所以会通过 <strong>valueOf</strong> 转换为原始类型再比较值。</p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><hr>
+<blockquote>
+<p>涉及面试题：如何正确判断 this？箭头函数的 this 是什么？</p>
+</blockquote>
+<p><strong>this</strong> 是很多人会混淆的概念，但是其实它一点都不难，只是网上很多文章把简单的东西说复杂了。</p>
+<p>先来看几个函数调用的场景</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">foo();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">	a: <span class="number">2</span>,</span><br><span class="line">	foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure>
+<p>接下来我们一个个分析上面的场景</p>
+<ul>
+<li>对于直接调用 foo 来说，不管 foo 函数被放在了什么地方，this 一定是 window</li>
+<li>对于 obj.foo() 来说，我们只需要记住，谁调用了函数，谁就是 this，所以在这个场景下 foo 函数中的 this 就是 obj 对象</li>
+<li>对于 new 的方式来说，this 被永远绑定在了 c 上面，不会被任何方式改变 this</li>
+</ul>
+<p>说完了以上几种情况，其实很多代码中的 this 应该就没什么问题了，下面让我们看看箭头函数中的 this</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a()()());</span><br></pre></td></tr></table></figure>
+<p>首先箭头函数其实没有 this，箭头函数中的 this 只取决包裹箭头函数的第一个普通函数的 this。在这个例子中，因为包裹箭头函数的第一个普通函数是 a，所以此时的 this 是 window。另外对箭头函数使用 bind 这类函数是无效的。</p>
+<p>最后种情况也就是 bind 这些改变上下文的 API 了，对于这些函数来说，this 取决于第一个参数，如果第一个参数为空，那么就是 window。</p>
+<p>那么说到 bind，如果对一个函数进行多次 bind，那么上下文会是什么呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">fn.bind().bind(a)() <span class="comment">// =&gt; ?</span></span><br></pre></td></tr></table></figure>
+<p>如果你认为输出结果是 a，那么你就错了，其实我们可以把上述代码转换成另一种形式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fn.bind().bind(a) 等于</span></span><br><span class="line"><span class="keyword">let</span> fn2 = <span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply()</span><br><span class="line">  &#125;.apply(a)</span><br><span class="line">&#125;</span><br><span class="line">fn2()</span><br></pre></td></tr></table></figure>
+<p>可以从上述代码中发现，不管我们给函数 bind 几次，fn 中的 this 永远由第一次 bind 决定，所以结果永远是 window。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123; <span class="attr">name</span>: <span class="string">'yck'</span> &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">foo.bind(a)() <span class="comment">// =&gt; 'yck'</span></span><br></pre></td></tr></table></figure>
+<p>以上就是 this 的规则了，但是可能会发生多个规则同时出现的情况，这时候不同的规则之间会根据优先级最高的来决定 this 最终指向哪里。</p>
+<p>首先，new 的方式优先级最高，接下来是 bind 这些函数，然后是 obj.foo() 这种调用方式，最后是 foo 这种调用方式，同时，箭头函数的 this 一旦被绑定，就不会再被任何方式所改变。</p>
+<p>这里有个流程图，图中的流程只针对于单个规则。</p>
+<p><img style="display:inline-block" src="https://storage-1252595003.cos.ap-guangzhou.myqcloud.com/assets/asset_test_4.png"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端面试之道/" rel="tag"># 前端面试之道</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/25/数组的完全随机排序/" rel="next" title="数组的完全随机排序">
+                <i class="fa fa-chevron-left"></i> 数组的完全随机排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/15/JS中的类型判断（一）/" rel="prev" title="JS中的类型判断（一）">
+                JS中的类型判断（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="saner">
+            
+              <p class="site-author-name" itemprop="name">saner</p>
+              <p class="site-description motion-element" itemprop="description">相自我改, 命自我造。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lazyman123" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始（Primitive）类型"><span class="nav-number">1.</span> <span class="nav-text">原始（Primitive）类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象（Object）类型"><span class="nav-number">2.</span> <span class="nav-text">对象（Object）类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-vs-instanceof"><span class="nav-number">3.</span> <span class="nav-text">typeof vs instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">4.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this"><span class="nav-number">5.</span> <span class="nav-text">this</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-star fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">saner</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共33.2k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="bg_content">
+       <canvas id="canvas"></canvas>
+  </div>
+  <script>
+ 'use strict';
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    var Circle = function () {
+       function Circle(x, y) {
+            _classCallCheck(this, Circle);
+
+            this.x = x;
+            this.y = y;
+            this.r = Math.random() * 10;
+            this._mx = Math.random();
+            this._my = Math.random();
+        }
+
+       _createClass(Circle, [{
+            key: 'drawCircle',
+            value: function drawCircle(ctx) {
+                ctx.beginPath();
+                //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+                ctx.arc(this.x, this.y, this.r, 0, 360);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+                ctx.fill();
+            }
+        }, {
+            key: 'drawLine',
+            value: function drawLine(ctx, _circle) {
+                var dx = this.x - _circle.x;
+                var dy = this.y - _circle.y;
+                var d = Math.sqrt(dx * dx + dy * dy);
+                if (d < 150) {
+                    ctx.beginPath();
+
+                    ctx.moveTo(this.x, this.y); //起始点
+                    ctx.lineTo(_circle.x, _circle.y); //终点
+                    ctx.closePath();
+                    ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                    ctx.stroke();
+                }
+            }
+
+
+        }, {
+            key: 'move',
+            value: function move(w, h) {
+                this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+                this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+                this.x += this._mx / 2;
+                this.y += this._my / 2;
+            }
+        }]);
+
+        return Circle;
+    }();
+
+
+
+    var currentCirle = function (_Circle) {
+        _inherits(currentCirle, _Circle);
+
+        function currentCirle(x, y) {
+            _classCallCheck(this, currentCirle);
+
+            return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+        }
+
+        _createClass(currentCirle, [{
+            key: 'drawCircle',
+            value: function drawCircle(ctx) {
+                ctx.beginPath();
+
+                //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+                this.r = 8;
+                ctx.arc(this.x, this.y, this.r, 0, 360);
+                ctx.closePath();
+                //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+                ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+                ctx.fill();
+            }
+        }]);
+
+        return currentCirle;
+    }(Circle);
+
+
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width = canvas.offsetWidth;
+    var h = canvas.height = canvas.offsetHeight;
+    var circles = [];
+    var current_circle = new currentCirle(0, 0);
+
+    var draw = function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < circles.length; i++) {
+            circles[i].move(w, h);
+            circles[i].drawCircle(ctx);
+            for (j = i + 1; j < circles.length; j++) {
+                circles[i].drawLine(ctx, circles[j]);
+            }
+        }
+        if (current_circle.x) {
+            current_circle.drawCircle(ctx);
+            for (var k = 1; k < circles.length; k++) {
+                current_circle.drawLine(ctx, circles[k]);
+            }
+        }
+        requestAnimationFrame(draw);
+    };
+
+    var init = function init(num) {
+        for (var i = 0; i < num; i++) {
+            circles.push(new Circle(Math.random() * w, Math.random() * h));
+        }
+        draw();
+    };
+    window.addEventListener('load', init(60));
+    window.onmousemove = function (e) {
+        e = e || window.event;
+        current_circle.x = e.clientX;
+        current_circle.y = e.clientY;
+    };
+    window.onmouseout = function () {
+        current_circle.x = null;
+        current_circle.y = null;
+    };
+    
+  </script>
+
+</body>
+</html>
